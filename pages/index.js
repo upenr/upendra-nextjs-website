@@ -77,12 +77,6 @@ const Index = () => {
           <Heading letterSpacing="tight" mb={4} as="h2" size="xl">
             Sample Projects
           </Heading>
-          <ProjectCard
-            title="Linux and Private Cloud Administration on IBM Power Systems Specialization"
-            description="A Coursera specialization designed and developed with Red Hat to clarify advanced concepts on Linux system administration and private cloud management, with live hands-on access to IBM Systems."
-            href="https://www.coursera.org/specializations/linux-private-cloud-administration-power-systems"
-            icon="letterU"
-          />
 		  <ProjectCard
             title="Ansible, Chef and Puppet in Enterprise Environments"
             description="The IBM-authorized course addresses the concepts involved in planning, deploying and implementing Ansible, Chef and Puppet, and shows how to integrate these tools in an enterprise cloud environment."
@@ -106,6 +100,12 @@ const Index = () => {
             description="This Android app uses IBM Watson AI to get personality insights from anyone's public Twitter profile. You can get insights on several dimensions, such as, personality traits, values, needs and consumer preferences."
             href="https://play.google.com/store/apps/details?id=com.upen.personalityapp"
             icon="twitter"
+          />
+		  <ProjectCard
+            title="Linux and Private Cloud Administration on IBM Power Systems Specialization (To be published.)"
+            description="A Coursera specialization I designed and developed with Red Hat to clarify advanced concepts on Linux system administration and private cloud management, with live hands-on access to IBM Systems."
+            href="https://www.coursera.org/specializations/linux-private-cloud-administration-power-systems"
+            icon="letterU"
           />
         </Flex>
         <NextSeo
@@ -179,6 +179,7 @@ const Index = () => {
                 size="300px"
                 src="/static/images/upen.jpg"
                 alt="Upendra Rajan"
+				mb={4}
               />
             </Flex>
           </Stack>

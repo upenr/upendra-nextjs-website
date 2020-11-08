@@ -50,7 +50,7 @@ const Container = ({ children }) => {
         />
 		</Tooltip>
         <Box>
-          <NextLink href="/blog" passHref>
+          <NextLink href="/blogs" passHref>
             <Button as="a" variant="ghost" p={[1, 4]}>
               Blog
             </Button>
