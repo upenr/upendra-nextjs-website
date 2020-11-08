@@ -1,0 +1,117 @@
+---
+title: 'Twitter Personality Insights with IBM Watson AI'
+publishedAt: '2018-01-07'
+summary: 'Write an Android application that takes a Twitter ID as input and comes up with personality insights based on text they have written.'
+image: '/static/images/10-days-in-norway/banner.png'
+---
+![Personality App](/static/images/Personalityapp/web_hi_res_512.png)<br/>
+
+# Table of Contents
+
+1.  [Introduction](#Introduction)
+2.  [Twitter Integration](#twitter-integration)
+3.  [Personality Insights Integration](#personality-insights-integration)
+4.  [Final application](#final-application)
+5.  [Screenshots](#here-are-a-few-screenshots)
+6.  [References](#references)
+
+# Introduction:
+
+There are several research papers (sources at the end of this page) that have found correlations between word usages and personalities. Researchers in psychology and linguistics have come up with several traits into which human behavior can be classified. These traits can be broken down into Personality Characteristics, Needs and Values. The big five personality characteristics like Agreeableness, Conscientiousness, Extraversion, Emotional range and Openness, each contain six facets to further characterize behavior. The Needs section has twelve, and the Values section has five further components. If you tried the Android application referenced in this page, you will understand the definitions of these components.
+IBM has several data analytics algorithms to deduce these traits from the input you provide. It can also come up with Consumption Preferences which are correlated with these personality traits. For example, studies have found that people who prefer orderliness in their lives are more likely to respond to coupons in a retail store, or people who scored high on modesty, openness, and friendliness were more likely to spread information to others. This entire thing is what we call IBM Watson™ Personality Insights.<br/>
+
+# Twitter Integration
+Blogs, articles, books and speeches are good sources of textual data written by a person, say a world leader. Tweets too. Twitter is ubiquitous and easy to integrate with other platforms, so I decided to experiment with it. IBM has already used Twitter as a way to analyze personality traits against a sample set of willing users through surveys, but that’s another story. After days of understanding the best way to do this, I found Twitter4J, a decent library which lets you acquire any data you need from Twitter.<br/>
+I created an application on Twitter which lets you authenticate from any client, in my case, an Android device. The website https://apps.twitter.com lets you create your application. The four values you need are OAuthConsumerKey, OAuthConsumerSecret, OAuthAccessToken, and OAuthAccessTokenSecret.<br/>
+By the time I was getting tweets, Twitter had increased the character count on individual tweets. It was no longer 140 characters. Luckily, the latest version of the library supported a mode to get more than 140 characters. Cleaning up my Gradle dependencies to use the latest library was quite an easy process. The version of Twitter4J I used was 4.0.6. If you can’t find the documentation to get the correct way to use Twitter4J from Gradle, here it is.
+```bash
+dependencies {
+    compile 'org.twitter4j:twitter4j-core:4.0.6'
+}
+```
+To establish the connection to our Twitter application, I did something like this. Note the ‘setTweetModeExtended’ parameter which lets you fetch more than 140 characters.
+```js
+ConfigurationBuilder cb = new ConfigurationBuilder().setTweetModeExtended(true);
+cb.setOAuthAuthenticationURL("https://api.twitter.com/oauth2/token");
+cb.setOAuthAccessTokenURL(" https://api.twitter.com/oauth/access_token");
+cb.setOAuthAuthorizationURL("https://api.twitter.com/oauth/authorize");
+cb.setOAuthRequestTokenURL("https://api.twitter.com/oauth/request_token");
+cb.setRestBaseURL("https://api.twitter.com/1.1/");
+cb.setOAuthConsumerKey(YOUR_KEY);
+cb.setOAuthConsumerSecret(YOUR_KEY_SECRET);
+cb.setOAuthAccessToken(YOUR_ACCESS_KEY);
+cb.setOAuthAccessTokenSecret(YOUR_ACCESS_KEY_SECRET);
+```
+
+# Personality Insights Integration
+
+IBM Watson Personality Insights is provided as a service on IBM BlueMix. The website http://console.bluemix.net/ lets you sign up and register for this service. I added a new resource to my account and added the Personality Insights service there. This may not be free for you depending on your account. I have a lower end tier which lets me access a thousand API calls a month. I’d ideally like to request this team at IBM not to stop API calls once my trial period expires.<br/>
+There is a Getting Started page with the service, that will tell you how to get and use the correct credentials to authenticate to this API via REST.
+The following was difficult to get from the documentation but here is the code I used to authenticate to this service and get responses.<br/>
+Declare this service:
+```js
+PersonalityInsights service;
+```
+Instantiate and use:
+```js
+service = new PersonalityInsights("2017-10-13");
+service.setUsernameAndPassword("My_Username", "My_Password");
+ProfileOptions options = new ProfileOptions.Builder().text(text).consumptionPreferences(true).contentLanguage(languageSelected).rawScores(true).build();
+Profile profile = service.profile(options).execute();
+```
+I tested with text input as you see above in the ‘options’ object, but HTML and JSON also work. The profile object now contains your desired output. After this, I had to strenuously parse the JSON to come up with the values. A sample output is shown below. Those children arrays need parsing too. The percentiles are double variables, make sure you round and convert them properly to a format you need. The five personality traits have six children each. Then, there are Needs, Values, Consumption Preferences.
+```js
+"personality": [
+    {
+      "trait_id": "big5_openness",
+      "name": "Openness",
+      "category": "personality",
+      "percentile": 0.8011555009553,
+      "raw_score": 0.77565404255038,
+      "significant": true,
+      "children": [
+        {
+          "trait_id": "facet_adventurousness",
+          "name": "Adventurousness",
+          "category": "personality",
+          "percentile": 0.89755869047319,
+          "raw_score": 0.54990704031219,
+          "significant": true
+        },
+        . . . and so on
+```
+
+If you can’t find a way add Personality Insights to your Gradle dependencies, here is how I used it. As of writing this, version 4.1.0 was the latest.
+```js
+dependencies {
+    compile 'com.ibm.watson.developer_cloud:personality-insights:4.1.0'
+    compile 'org.twitter4j:twitter4j-core:4.0.6'
+}
+```
+
+# Final application
+
+I designed the UI of my application keeping Google’s material design guidelines in mind. If you would like to work with this application, please download it from here: 
+https://play.google.com/store/apps/details?id=com.upen.personalityapp
+
+### Here are a few screenshots
+![Screenshot1](/static/images/Personalityapp/phone/device-2017-12-30-192943.png)
+![Screenshot2](/static/images/Personalityapp/phone/device-2017-12-30-193107.png)
+![Screenshot3](/static/images/Personalityapp/phone/device-2017-12-30-193143.png)
+![Screenshot4](/static/images/Personalityapp/phone/device-2017-12-30-193226.png)
+
+I apologize for any grammatical errors. I wrote this in a very short amount of time.
+To analyze a Twitter profile, say https://twitter.com/realDonaldTrump, just type ‘realDonaldTrump’ and touch Analyze. You can also view tweets that were analyzed.
+This service could have several applications in the back end of your business, for example, to predict someone’s behavior in response to a product or to tailor offerings based on someone’s needs etc.
+
+# References
+
+1)	Research papers cited in the Introduction in no particular order:<br/>
+a.	Fast, Lisa A., and David C. Funder. Personality as manifest in word use: correlations with self-report, acquaintance report, and behavior. Journal of Personality and Social Psychology, Vol. 94(2) (2008): pp. 334-346.<br/>
+b.	Gill, Alastair J., Scott Nowson, and Jon Oberlander. What Are They Blogging About? Personality, Topic and Motivation in Blogs. AAAI Publications, Third International AAAI Conference on Weblogs and Social Media (2009): pp. 18-25.<br/>
+c.	Golbeck, Jennifer, and Eric Norris. Personality, movie preferences, and recommendations. Proceedings of the IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining (2013): pp. 1414-1415.<br/>
+d.	Hirsh, Jacob B., Sonia K. Kang, and Galen V. Bodenhausen. Personalized Persuasion: Tailoring Persuasive Appeals to Recipients' Personality Traits. Psychological Science, Vol. 23(6) (June 2012): pp. 578-581.<br/>
+e.	Mahmud, Jalal, Michelle X. Zhou, Nimrod Megiddo, Jeffrey Nichols, and Clemens Drews. Optimizing the Selection of Strangers to Answer Questions on Social Media. Computing Research Repository (CoRR) abs/1404.2013 (2014).<br/>
+f.	Lee, Kyumin, Jalal Mahmud, Jilin Chen, Michelle X. Zhou, and Jeffrey Nichols. Who will retweet this? Automatically Identifying and Engaging Strangers on Twitter to Spread Information. Proceedings of the International Conference on Intelligent User Interfaces (2014): pp. 247-256.<br/>
+
+
