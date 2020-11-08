@@ -2,21 +2,21 @@ import React from 'react';
 import NextLink from 'next/link';
 import useSWR from 'swr';
 import format from 'comma-number';
-import { useColorMode, Heading, Text, Flex, Box, Link, Image } from '@chakra-ui/core';
+import { useColorMode, Heading, Text, Flex, Box, Link } from '@chakra-ui/core';
 
 
 const BlogPost = (frontMatter) => {
-  const { image, title, summary } = frontMatter;
+  const { title, summary } = frontMatter;
   const { colorMode } = useColorMode();
   const secondaryTextColor = {
     light: 'gray.700',
     dark: 'gray.400'
   };
-
   const slug = frontMatter.__resourcePath
-    .replace('blog/', '')
     .replace('.mdx', '');
-
+	
+  console.log('slug', slug);
+	
   return (
     <NextLink href={`/${slug}`} passHref>
       <Link w="100%" _hover={{ textDecoration: 'none' }}>
