@@ -13,46 +13,42 @@ import {
 } from '@chakra-ui/core';
 
 import Container from '../components/Container';
-import Subscribe from '../components/Subscribe';
-import ViewCounter from '../components/ViewCounter';
 import BlogSeo from '../components/BlogSeo';
 
 const editUrl = (slug) =>
-  `https://github.com/leerob/leerob.io/edit/master/pages/blog/${slug}.mdx`;
+  `https://github.com/upenr/upenr.github.io/edit/master/pages/blog/${slug}.mdx`;
 const discussUrl = (slug) =>
-  `https://mobile.twitter.com/search?q=${encodeURIComponent(
-    `https://leerob.io/blog/${slug}`
+  `https://mobile.twitter.com/compose/tweet${encodeURIComponent(
+    ``
   )}`;
 
-export default (frontMatter) => {
+export default function BlogLayout({ children, frontMatter }) {
   const slug = frontMatter.__resourcePath
     .replace('blog/', '')
     .replace('.mdx', '');
-
-  return ({ children }) => {
-    const { colorMode } = useColorMode();
-    const textColor = {
-      light: 'gray.700',
-      dark: 'gray.400'
-    };
+  const { colorMode } = useColorMode();
+  const textColor = {
+    light: '#2196F3',
+    dark: '#2196F3'
+  };
 
     return (
       <Container>
-        <BlogSeo url={`https://leerob.io/blog/${slug}`} {...frontMatter} />
+        <BlogSeo url={`https://upenr.github.io/blog/${slug}`} {...frontMatter} />
         <Stack
           as="article"
           spacing={8}
           justifyContent="center"
           alignItems="flex-start"
           m="0 auto 4rem auto"
-          maxWidth="700px"
+          maxWidth="850px"
           w="100%"
         >
           <Flex
             flexDirection="column"
             justifyContent="flex-start"
             alignItems="flex-start"
-            maxWidth="700px"
+            maxWidth="850px"
             w="100%"
           >
             <Heading letterSpacing="tight" mb={2} as="h1" size="2xl">
@@ -62,52 +58,41 @@ export default (frontMatter) => {
               justify="space-between"
               align={['initial', 'center']}
               direction={['column', 'row']}
-              mt={2}
+              mt={4}
               w="100%"
-              mb={4}
+              mb={0}
             >
               <Flex align="center">
                 <Avatar
-                  size="xs"
+                  size="sm"
                   name="Upendra Rajan"
-                  src="https://bit.ly/33vEjhB"
+                  src="/static/images/upen.jpg"
                   mr={2}
                 />
-                <Text fontSize="sm" color={textColor[colorMode]}>
+                <Link href="https://twitter.com/__upen" target="_blank" fontSize="sm" color={textColor[colorMode]} mr={1}>
                   {frontMatter.by}
-                  {'Upendra Rajan / '}
-                  {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
+                  {'Upendra Rajan'}
+                </Link>
+				<Text fontSize="sm">
+                  {"on "}{format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
                 </Text>
               </Flex>
               <Text fontSize="sm" color="gray.500" minWidth="100px" mt={[2, 0]}>
                 {frontMatter.readingTime.text}
                 {` • `}
-                <ViewCounter id={slug} />
               </Text>
             </Flex>
           </Flex>
           {children}
-          <Subscribe />
           <Box>
-            <Link href={discussUrl(slug)} isExternal>
-              {'Discuss on Twitter'}
-            </Link>
-            {` • `}
-            <Link href={editUrl(slug)} isExternal>
-              {'Edit on GitHub'}
+            <Link href={discussUrl(slug)} isExternal color={textColor[colorMode]}>
+                {` • `}{'Discuss on Twitter'}
+            </Link><br/><br/>
+            <Link href={editUrl(slug)} isExternal color={textColor[colorMode]}>
+                {` • `}{'Edit on GitHub'}
             </Link>
           </Box>
-          <IframeResizer
-            checkOrigin={false}
-            title="Comments"
-            src={`https://fastfeedback.io/embed/BLspD6y8Bfn73LLm7nvW/${slug}?theme=${colorMode}`}
-            style={{
-              width: '1px',
-              minWidth: '100%'
-            }}
-          />
         </Stack>
       </Container>
     );
   };
-};
