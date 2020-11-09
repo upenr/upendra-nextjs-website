@@ -1,12 +1,12 @@
 {
-  "homepage": "https://upenr.github.io",
-  "name": "upenr.github.io",
+  "homepage": "https://upenr-github-io.vercel.app",
+  "name": "upenr-github-io.vercel.app",
   "description": "A personal website.",
   "version": "0.0.1",
   "author": {
     "name": "Upendra Rajan",
     "email": "urajan@ncsu.edu",
-    "url": "https://upenr.github.io"
+    "url": "https://upenr-github-io.vercel.app"
   },
   "license": "MIT",
   "repository": {

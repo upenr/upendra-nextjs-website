@@ -28,7 +28,7 @@ import { frontMatter as mlp1 } from './blog/image-classification-machine-learnin
 import { frontMatter as usachina } from './blog/usa-and-china.mdx';
 
 
-const url = 'https://upenr.vercel.app/blog';
+const url = 'https://upenr-github-io.vercel.app/blog';
 const title = 'Blog: Upendra Rajan';
 const description = 'Thoughts on IT, businesses, countries, technology and even my personal life.';
 
