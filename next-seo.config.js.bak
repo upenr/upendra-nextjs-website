@@ -5,11 +5,11 @@ const description =
 const SEO = {
   title,
   description,
-  canonical: 'upenr.github.io',
+  canonical: 'upenr-github-io.vercel.app',
   openGraph: {
     type: 'website',
     locale: 'en_IE',
-    url: 'upenr.github.io',
+    url: 'upenr-github-io.vercel.app',
     title,
     description,
     images: [

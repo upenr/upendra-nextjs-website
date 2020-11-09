@@ -16,7 +16,7 @@ import Container from '../components/Container';
 import BlogSeo from '../components/BlogSeo';
 
 const editUrl = (slug) =>
-  `https://github.com/upenr/upenr-github-io.vercel.app/edit/master/pages/blog/${slug}.mdx`;
+  `https://github.com/upenr/upendra-nextjs-website/blob/main/pages/blog/${slug}.mdx`;
 const discussUrl = (slug) =>
   `https://mobile.twitter.com/compose/tweet${encodeURIComponent(
     ``
@@ -34,7 +34,7 @@ export default function BlogLayout({ children, frontMatter }) {
 
     return (
       <Container>
-        <BlogSeo url={`https://upenr-github-io.vercel.app/blog/${slug}`} {...frontMatter} />
+        <BlogSeo url={`https://upenr.vercel.app/blog/${slug}`} {...frontMatter} />
         <Stack
           as="article"
           spacing={8}

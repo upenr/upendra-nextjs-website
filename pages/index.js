@@ -22,8 +22,8 @@ const title = "About Me: Upendra";
 const Index = () => {
   const { colorMode } = useColorMode();
   const textColor = {
-    light: "#00B5D8",
-    dark: "#00B5D8",
+    light: "#009688",
+    dark: "#009688",
   };
   const secondaryTextColor = {
     light: "gray.800",
@@ -71,23 +71,29 @@ const Index = () => {
           justifyContent="flex-start"
           alignItems="flex-start"
           maxWidth="100%"
-          mt={8}
+          mt={24}
           mb={8}
         >
           <Heading letterSpacing="tight" mb={4} as="h2" size="xl">
-            Sample Projects
+            Portfolio
           </Heading>
 		  <ProjectCard
-            title="Ansible, Chef and Puppet in Enterprise Environments"
-            description="The IBM-authorized course addresses the concepts involved in planning, deploying and implementing Ansible, Chef and Puppet, and shows how to integrate these tools in an enterprise cloud environment."
-            href="https://www.ibm.com/training/course/QZC50G"
-            icon="ansible"
+            title="Manager of Worldwide IBM Storage Technical Client Training and Related Services"
+            description="Managed a team of IBM Storage specialists, consultants and content developers, wrote and published technical content with hands-on access on software-defined storage (SDS) to enterprise clients, business partners and IBMers."
+            href="https://www.ibm.com/training/search?query=IBM%20Storage"
+            icon="storage"
           />
-          <ProjectCard
-            title="IBM Cloud PowerVC Manager Implementation"
-            description="An OpenStack based private cloud environment to manage enterprise compute systems running the IBM ppc64 architecture. IBM Cloud PowerVC Manager, an infrastructure-as-a-service (IaaS) offering, provides a self-service cloud portal for IBM Power Systems and is built on OpenStack."
+		  <ProjectCard
+            title="OpenStack Implementation in Enterprise Data Centers"
+            description="IBM Cloud PowerVC Manager, an infrastructure-as-a-service (IaaS) offering, provides a self-service cloud portal for IBM Power Systems and is built on OpenStack. Implemented an OpenStack based private cloud environment to manage enterprise compute systems running the IBM ppc64 architecture."
             href="https://www.ibm.com/training/course/QZC30G"
             icon="openstack"
+          />
+		  <ProjectCard
+            title="Ansible, Chef and Puppet in Enterprise Environments"
+            description="This IBM-authorized course addresses the concepts involved in planning, deploying and implementing Ansible, Chef and Puppet, and shows how to integrate these tools in an enterprise cloud environment."
+            href="https://www.ibm.com/training/course/QZC50G"
+            icon="ansible"
           />
 		  <ProjectCard
             title="Return Finder: ROCE, ROE, ROA of any stock"
@@ -136,16 +142,15 @@ const Index = () => {
               IBM Systems
             </CustomLink>{" "}
             and cloud computing (IaaS/PaaS) related technical content and client
-            services, while coming up with innovative methods to monetize data
+            services, and coming up with innovative methods to monetize data
             center services.
           </Text>
           <Text color={secondaryTextColor[colorMode]} mb={4}>
             I’ve presented to IT personnel and executives at conferences
-            worldwide about IT infrastructure design and cloud product
-            implementation, frequently through live demonstrations, labs and
-            presentations. I also read several investment and business
-            management related books in my free time, along with developing
-            Android applications and website such as this. Follow me on&nbsp;
+            worldwide about IT infrastructure design and cloud-based product
+            implementations, frequently through labs, live demonstrations and
+            presentations. I read several investment and business related books in my free time. I also develop
+            Android applications and websites such as this. Follow me on&nbsp;
             <CustomLink href="https://www.twitter.com/__upen">
               Twitter
             </CustomLink>{" "}
@@ -179,7 +184,7 @@ const Index = () => {
                 size="300px"
                 src="/static/images/upen.jpg"
                 alt="Upendra Rajan"
-				mb={4}
+				mb={10}
               />
             </Flex>
           </Stack>
