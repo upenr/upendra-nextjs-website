@@ -36,10 +36,10 @@ const Error = () => {
           mt={10}
         >
           <Heading letterSpacing="tight" mb={2} as="h1" size="2xl">
-          Error 404
+            Error 404
           </Heading>
           <Text color={secondaryTextColor[colorMode]} my={4}>
-           &nbsp;This page doesn't exist. 
+            &nbsp;This page doesn't exist.
           </Text>
           <NextLink href="/" passHref>
             <Button
