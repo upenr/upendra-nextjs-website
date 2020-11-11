@@ -89,7 +89,6 @@ const Index = () => {
                 variantColor="gray"
                 width="40%"
                 size="lg"
-                as="a"
               >
                 Search
               </Button>
@@ -192,10 +191,10 @@ const Index = () => {
             </CustomLink>
           </Text>
           <Text color={secondaryTextColor[colorMode]} mb={4}>
-            I grew up in Chennai, India, graduating top of my class with a
-            Bachelor of Engineering degree in Electronics and Communication
+            I grew up in Chennai, India, graduating with a
+            Bachelor's degree in Electronics and Communication
             Engineering. I then received a Master's degree in Computer Network
-            Engineering at North Carolina State University.
+            Engineering from North Carolina State University.
           </Text>
           <Stack
             as="main"

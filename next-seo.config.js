@@ -1,5 +1,5 @@
 const title = 'Upendra Rajan';
-const description = 'Senior IT Management Consultant. Content creator and manager.';
+const description = 'Senior IT Management Consultant.';
 
 const SEO = {
   title,
@@ -7,7 +7,7 @@ const SEO = {
   canonical: 'upenr.vercel.app',
   openGraph: {
     type: 'website',
-    locale: 'en_IE',
+    locale: 'en_US',
     url: 'upenr.vercel.app',
     title,
     description,
@@ -15,8 +15,8 @@ const SEO = {
       {
         url: '/static/images/upen.jpg',
         alt: 'Upen',
-        width: 1280,
-        height: 720
+        width: 400,
+        height: 400
       }
     ]
   },
