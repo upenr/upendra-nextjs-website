@@ -74,10 +74,10 @@ const Blog = () => {
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          mt={0}
+          mt={4}
           mb={4}
         >
-          <InputGroup my={0} mr={100} ml={100} w="50%">
+          <InputGroup my={0} mr={100} ml={100} w="70%">
             <Input
               aria-label="Search blog title or summary"
               onChange={(e) => setSearchValue(e.target.value)}
@@ -100,7 +100,7 @@ const Blog = () => {
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          mt={8}
+          mt={20}
         >
           <Heading
             letterSpacing="tight"
