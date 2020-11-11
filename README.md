@@ -5,12 +5,12 @@ This is a [website](https://upenr.vercel.app) which uses [Next.js](https://nextj
 ## Overview
 
 - `/index` - Home page with custom project boxes
-- `/about` - An About Me page
 - `/blog/` - Static pre-rendered MDX blogs
 
 ## Running Locally
 
 - Clone this project and use;
+
 ```bash
 npm run dev
 ```

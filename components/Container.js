@@ -1,6 +1,14 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { useColorMode, Button, Flex, Avatar, Box, IconButton, Tooltip } from '@chakra-ui/core';
+import {
+  useColorMode,
+  Button,
+  Flex,
+  Avatar,
+  Box,
+  IconButton,
+  Tooltip
+} from '@chakra-ui/core';
 import styled from '@emotion/styled';
 
 import Footer from './Footer';
@@ -42,15 +50,15 @@ const Container = ({ children }) => {
         mb={8}
         mx="0"
       >
-	  <Tooltip label="Dark Mode" placement="bottom">
-        <IconButton		  
-          aria-label="Toggle dark mode"
-          icon={colorMode === 'dark' ? 'sun' : 'moon'}
-          onClick={toggleColorMode}
-        />
-		</Tooltip>
+        <Tooltip label="Dark Mode" placement="bottom">
+          <IconButton
+            aria-label="Toggle dark mode"
+            icon={colorMode === 'dark' ? 'sun' : 'moon'}
+            onClick={toggleColorMode}
+          />
+        </Tooltip>
         <Box>
-          <NextLink href="/blogs" passHref>
+          <NextLink href="/blog" passHref>
             <Button as="a" variant="ghost" p={[1, 4]}>
               Blog
             </Button>

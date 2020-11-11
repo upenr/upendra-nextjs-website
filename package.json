@@ -15,7 +15,7 @@
   },
   "scripts": {
     "predeploy": "rimraf .next/cache/next-babel-loader && next build",
-	"deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d build",
     "dev": "rimraf .next/cache/next-babel-loader && next dev",
     "build": "rimraf .next/cache/next-babel-loader && next build",
     "start": "next start",

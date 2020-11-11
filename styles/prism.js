@@ -7,7 +7,7 @@ const prismBaseTheme = css`
   }
   code[class*='language-'],
   pre[class*='language-'] {
-    color: ${theme.colors.blue[800]};
+    color: ${theme.colors.teal[800]};
     background: none;
     font-family: ${theme.fonts.mono};
     font-size: ${theme.fontSizes[2]};
@@ -39,8 +39,8 @@ const prismBaseTheme = css`
   }
   :not(pre) > code[class*='language-'],
   pre[class*='language-'] {
-    background: ${theme.colors.blue[50]};
-    border: 1px solid ${theme.colors.blue[200]};
+    background: ${theme.colors.teal[50]};
+    border: 1px solid ${theme.colors.teal[200]};
     border-radius: ${theme.radii.lg};
   }
   /* Inline code */
@@ -53,7 +53,7 @@ const prismBaseTheme = css`
   .token.prolog,
   .token.doctype,
   .token.cdata {
-    color: slateblue;
+    color: slateteal;
   }
   .token.punctuation {
     color: #999;
@@ -116,17 +116,17 @@ const prismBaseTheme = css`
     margin-right: -${theme.space[4]};
     padding-left: ${theme.space[4]};
     padding-right: ${theme.space[4]};
-    background-color: ${theme.colors.blue[200]};
-    box-shadow: inset 3px 0px 0 0px ${theme.colors.blue[600]};
+    background-color: ${theme.colors.teal[200]};
+    box-shadow: inset 3px 0px 0 0px ${theme.colors.teal[600]};
     min-width: fit-content;
   }
 
   .remark-code-title {
     padding: ${theme.space[2]} ${theme.space[4]};
     font-family: ${theme.fonts.mono};
-    background: ${theme.colors.blue[200]};
-    color: ${theme.colors.blue[800]};
-    border: 1px solid ${theme.colors.blue[200]};
+    background: ${theme.colors.teal[200]};
+    color: ${theme.colors.teal[800]};
+    border: 1px solid ${theme.colors.teal[200]};
     border-top-left-radius: ${theme.radii.lg};
     border-top-right-radius: ${theme.radii.lg};
     font-size: 0.8rem;
@@ -147,13 +147,13 @@ export const prismLightTheme = css`
 
   code[class*='language-'],
   pre[class*='language-'] {
-    color: ${theme.colors.blue[800]};
+    color: ${theme.colors.teal[800]};
   }
 
   :not(pre) > code[class*='language-'],
   pre[class*='language-'] {
-    background: ${theme.colors.blue[50]};
-    border: 1px solid ${theme.colors.blue[200]};
+    background: ${theme.colors.teal[50]};
+    border: 1px solid ${theme.colors.teal[200]};
   }
 
   .mdx-marker {
@@ -231,22 +231,22 @@ export const prismDarkTheme = css`
 
   code[class*='language-'],
   pre[class*='language-'] {
-    color: ${theme.colors.blue[50]};
+    color: ${theme.colors.teal[50]};
   }
 
   :not(pre) > code[class*='language-'],
   pre[class*='language-'] {
-    background: ${theme.colors.blue[800]};
-    border: 1px solid ${theme.colors.blue[700]};
+    background: ${theme.colors.teal[800]};
+    border: 1px solid ${theme.colors.teal[700]};
   }
 
   .mdx-marker {
-    background-color: ${theme.colors.blue[700]};
+    background-color: ${theme.colors.teal[700]};
   }
 
   .remark-code-title {
-    background: ${theme.colors.blue[700]};
-    color: ${theme.colors.blue[100]};
-    border: 1px solid ${theme.colors.blue[700]};
+    background: ${theme.colors.teal[700]};
+    color: ${theme.colors.teal[100]};
+    border: 1px solid ${theme.colors.teal[700]};
   }
 `;

@@ -11,9 +11,7 @@ import {
 } from '@chakra-ui/core';
 
 const trackGoal = (title) => {
-  const goalCodes = {
-   
-  };
+  const goalCodes = {};
 
   Fathom.trackGoal(goalCodes[title], 0);
 };

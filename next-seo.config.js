@@ -1,6 +1,5 @@
 const title = 'Upendra Rajan';
-const description =
-  'IT infrastructure enthusiast and content creator.';
+const description = 'Senior IT Management Consultant. Content creator and manager.';
 
 const SEO = {
   title,
@@ -14,8 +13,8 @@ const SEO = {
     description,
     images: [
       {
-        url: '',
-        alt: title,
+        url: '/static/images/upen.jpg',
+        alt: 'Upen',
         width: 1280,
         height: 720
       }
@@ -23,7 +22,7 @@ const SEO = {
   },
   twitter: {
     handle: '@__upen',
-    site: '',
+    site: 'https://twitter.com/__upen',
     cardType: 'summary_large_image'
   }
 };
