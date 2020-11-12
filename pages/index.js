@@ -69,8 +69,8 @@ const Index = () => {
             </Text>
           </Heading>
           <Text color={secondaryTextColor[colorMode]}>
-            Welcome. This is a small blog-search website I built to understand
-            page pre-fetching on Next.js.
+            Welcome. This is a blog-search website I built to understand
+            page pre-rendering on Next.js.
           </Text>
           <Flex
             align="center"
