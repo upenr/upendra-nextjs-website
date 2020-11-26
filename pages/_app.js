@@ -1,6 +1,10 @@
 import { MDXProvider } from '@mdx-js/react';
 import { DefaultSeo } from 'next-seo';
-import { ChakraProvider, ColorModeProvider, useColorMode } from '@chakra-ui/react';
+import {
+  ChakraProvider,
+  ColorModeProvider,
+  useColorMode
+} from '@chakra-ui/react';
 import Head from 'next/head';
 import { Global, css } from '@emotion/react';
 import MDXComponents from '../components/MDXComponents';
@@ -8,7 +12,7 @@ import SEO from '../next-seo.config';
 import { prismLightTheme, prismDarkTheme } from '../styles/prism';
 
 const GlobalStyle = ({ children }) => {
-const { colorMode } = useColorMode();
+  const { colorMode } = useColorMode();
 
   return (
     <>
@@ -40,10 +44,9 @@ const { colorMode } = useColorMode();
 };
 
 const App = ({ Component, pageProps }) => {
-
   return (
-  <>
-    <DefaultSeo {...SEO} />
+    <>
+      <DefaultSeo {...SEO} />
       <Head>
         <link
           rel="apple-touch-icon"
@@ -67,11 +70,11 @@ const App = ({ Component, pageProps }) => {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <ChakraProvider>
-      <MDXProvider components={MDXComponents}>
+        <MDXProvider components={MDXComponents}>
           <GlobalStyle>
             <Component {...pageProps} />
           </GlobalStyle>
-      </MDXProvider>
+        </MDXProvider>
       </ChakraProvider>
     </>
   );

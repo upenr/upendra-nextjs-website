@@ -274,19 +274,18 @@ const Index = () => {
               · IBM Systems Technical Symposium 2014, Johannesburg, Cape Town
               <br />
               · IBM TechU 2014, Istanbul, Dublin, Sao Paulo
-              <br />
-              · And many other virtual client and Business Partner events
+              <br />· And many other virtual client and Business Partner events
             </Text>
             <Heading letterSpacing="tight" mb={4} as="h2" size="xl">
               Cities Visited 🏙️
             </Heading>
             <Box mb={4} width="100%">
-            <iframe
-              height="300px"
-              src="https://www.google.com/maps/d/embed?mid=1DNDs3fIaVs77g3IGDeFxp_D9iRy03d7X"
-              title="Upendra Travelled Cities"
-              width="100%"
-            />
+              <iframe
+                height="300px"
+                src="https://www.google.com/maps/d/embed?mid=1DNDs3fIaVs77g3IGDeFxp_D9iRy03d7X"
+                title="Upendra Travelled Cities"
+                width="100%"
+              />
             </Box>
           </Flex>
         </Stack>

@@ -20,7 +20,7 @@ const SEO = {
         height: 400
       }
     ]
-  }, 
+  },
   twitter: {
     handle: '@__upen',
     site: 'https://twitter.com/__upen',
