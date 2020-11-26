@@ -3,7 +3,8 @@ const remarkCapitalize = require('remark-capitalize');
 const excludedWords = [
   'is',
   'in',
-  'About',,
+  'About',
+  ,
   'IT',
   'CERN',
   'USA',

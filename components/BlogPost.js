@@ -15,9 +15,9 @@ import {
 
 const BlogPost = (frontMatter) => {
   const slug = frontMatter.__resourcePath
-  .replace('blog\\', '') //For Windows
-  .replace('blog/', '')
-  .replace('.mdx', '');
+    .replace('blog\\', '') //For Windows
+    .replace('blog/', '')
+    .replace('.mdx', '');
 
   const { title, summary, publishedAt, type } = frontMatter;
   const { colorMode } = useColorMode();
@@ -28,9 +28,9 @@ const BlogPost = (frontMatter) => {
   //const slug = frontMatter.__resourcePath.replace('.mdx', '');
   //console.log('slug', slug);
 
-  const scrollSearch = myKey => {
+  const scrollSearch = (myKey) => {
     window.scrollTo(0, 0);
-    frontMatter.handleSearch(myKey)
+    frontMatter.handleSearch(myKey);
   };
 
   return (

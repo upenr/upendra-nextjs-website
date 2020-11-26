@@ -1,7 +1,7 @@
 const readingTime = require('reading-time');
 const mdxPrism = require('mdx-prism');
 const withMdxEnhanced = require('next-mdx-enhanced');
-const isProd = process.env.NODE_ENV === 'production'
+const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = withMdxEnhanced({
   layoutPath: 'layouts',

@@ -58,7 +58,12 @@ const CustomLink = (props) => {
   };
 
   const href = props.href;
-  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#') || href.startsWith('##') || href.startsWith('###'));
+  const isInternalLink =
+    href &&
+    (href.startsWith('/') ||
+      href.startsWith('#') ||
+      href.startsWith('##') ||
+      href.startsWith('###'));
 
   if (isInternalLink) {
     return (

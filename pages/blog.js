@@ -30,7 +30,7 @@ import { frontMatter as usachina } from './blog/usa-and-china.mdx';
 
 const url = 'https://upenr.vercel.app/blog';
 const title = 'Blog: Upendra Rajan';
-const description = 'Upendra Rajan\'s Blog Search Website';
+const description = "Upendra Rajan's Blog Search Website";
 
 const Blog = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -49,20 +49,22 @@ const Blog = () => {
   };
 
   const filteredBlogPosts = blogs1
-    .sort(
-      (a, b) => {
-        if (new Date(a.publishedAt) < new Date(b.publishedAt)) {
-          return 1;
-        }
-        if (new Date(a.publishedAt) > new Date(b.publishedAt)) {
-          return -1;
-        }
-        // a must be equal to b
-        return 0;
+    .sort((a, b) => {
+      if (new Date(a.publishedAt) < new Date(b.publishedAt)) {
+        return 1;
       }
-    )
+      if (new Date(a.publishedAt) > new Date(b.publishedAt)) {
+        return -1;
+      }
+      // a must be equal to b
+      return 0;
+    })
     .filter((frontMatter) => {
-      const concat = frontMatter.summary + frontMatter.title + frontMatter.publishedAt + frontMatter.type;
+      const concat =
+        frontMatter.summary +
+        frontMatter.title +
+        frontMatter.publishedAt +
+        frontMatter.type;
       return concat.toLowerCase().includes(searchValue.toLowerCase());
     });
 
@@ -87,17 +89,17 @@ const Blog = () => {
           mb={4}
         >
           <InputGroup my={0} mr={100} ml={100} w="70%">
-          <Input
+            <Input
               aria-label="Search"
               borderColor="blue.500"
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder="Search"
               value={searchValue}
               autoFocus
-              onFocus={e => e.currentTarget.select()}
+              onFocus={(e) => e.currentTarget.select()}
             />
             <InputRightElement>
-            <IconButton
+              <IconButton
                 variant="unstyled"
                 mb={1}
                 borderColor="blue.500"
@@ -153,9 +155,11 @@ const Blog = () => {
           >
             {!filteredBlogPosts.length && 'No posts found.'}
             {filteredBlogPosts.map((frontMatter) => (
-              <BlogPost key={frontMatter.title + frontMatter.publishedAt}
-              handleSearch={(anyKey) => setSearchValue(anyKey)}
-              {...frontMatter} />
+              <BlogPost
+                key={frontMatter.title + frontMatter.publishedAt}
+                handleSearch={(anyKey) => setSearchValue(anyKey)}
+                {...frontMatter}
+              />
             ))}
           </Flex>
           <br />
@@ -186,7 +190,11 @@ const Blog = () => {
             borderRadius={0}
             p={4}
           >
-            <StatLabel>Number of blogs on this site<br/><br/></StatLabel>
+            <StatLabel>
+              Number of blogs on this site
+              <br />
+              <br />
+            </StatLabel>
             <StatNumber textAlign="center">{blogs1.length}</StatNumber>
           </Stat>
         </Flex>

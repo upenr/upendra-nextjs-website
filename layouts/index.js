@@ -61,10 +61,7 @@ export default function BlogLayout({ children, frontMatter }) {
 
   return (
     <Container>
-      <BlogSeo
-        url={`https://upenr.vercel.app/blog/${slug}`}
-        {...frontMatter}
-      />
+      <BlogSeo url={`https://upenr.vercel.app/blog/${slug}`} {...frontMatter} />
       <Stack
         as="article"
         spacing={8}
