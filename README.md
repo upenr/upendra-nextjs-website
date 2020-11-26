@@ -1,6 +1,6 @@
-# Upendra Rajan's Static Website
+# Upendra Rajan's Static Website 🔍
 
-This is a [website](https://upenr.vercel.app) which uses [Next.js](https://nextjs.org) to deliver pre-rendered, static pages for an enhanced user experience. It has a search bar which can search through my blogs.
+This is a React and Next.js-based [website](https://upenr.vercel.app) which delivers pre-rendered, static pages for an enhanced user experience. It has a search bar to search through my blogs.
 
 ## Overview
 

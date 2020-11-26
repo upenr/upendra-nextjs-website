@@ -9,49 +9,94 @@ import {
   Flex,
   Box,
   Badge,
-  Link
-} from '@chakra-ui/core';
+  Link,
+  Tooltip
+} from '@chakra-ui/react';
 
 const BlogPost = (frontMatter) => {
-  const { title, summary } = frontMatter;
+  const slug = frontMatter.__resourcePath
+  .replace('blog\\', '') //For Windows
+  .replace('blog/', '')
+  .replace('.mdx', '');
+
+  const { title, summary, publishedAt, type } = frontMatter;
   const { colorMode } = useColorMode();
   const secondaryTextColor = {
     light: 'gray.700',
     dark: 'gray.400'
   };
-  const slug = frontMatter.__resourcePath.replace('.mdx', '');
+  //const slug = frontMatter.__resourcePath.replace('.mdx', '');
+  //console.log('slug', slug);
 
-  console.log('slug', slug);
+  const scrollSearch = myKey => {
+    window.scrollTo(0, 0);
+    frontMatter.handleSearch(myKey)
+  };
 
   return (
-    <NextLink href={`/${slug}`} passHref>
-      <Link w="100%" _hover={{ textDecoration: 'none' }}>
-        <Box mt={{ base: 4, md: 0 }} ml={{ md: 0 }} mb="2">
-          <Badge fontSize="xs" letterSpacing="tight" color="teal.500">
-            Blog
+    <>
+      <Flex
+        width="100%"
+        align="flex-start"
+        justifyContent="space-between"
+        flexDirection={['column', 'row']}
+      >
+        <Box alignItems="flex-start" mt={4} ml={0} mb={2}>
+          <Badge
+            cursor="pointer"
+            _focus={{ boxShadow: 'outline' }}
+            onClick={() => scrollSearch(type)}
+            _hover={{ textDecoration: 'underline' }}
+            textTransform="capitalcase"
+            rounded="full"
+            fontSize="xs"
+            letterSpacing="tight"
+            colorScheme="orange"
+            px="4"
+            py="1"
+          >
+            {type}
           </Badge>
         </Box>
-        <Box mb={10} display="block" width="100%">
-          <Flex
-            width="100%"
-            align="flex-start"
-            justifyContent="space-between"
-            flexDirection={['column', 'row']}
+      </Flex>
+      <NextLink href={`blog/${slug}`} passHref>
+        <Link w="100%" _hover={{ textDecoration: 'none' }}>
+          <Box display="block" width="100%">
+            <Flex
+              width="100%"
+              align="flex-start"
+              justifyContent="space-between"
+              flexDirection={['column', 'row']}
+            >
+              <Heading size="md" as="h3" mb={2} fontWeight="medium">
+                {title}
+              </Heading>
+            </Flex>
+            <Text mb={2} color={secondaryTextColor[colorMode]}>
+              {summary}
+            </Text>
+          </Box>
+        </Link>
+      </NextLink>
+      <Flex width="100%" align="flex-start" justifyContent="flex-start">
+        <Box alignItems="flex-start" mb={12}>
+          <Badge
+            textTransform="capitalcase"
+            cursor="pointer"
+            onClick={() => scrollSearch(publishedAt)}
+            _hover={{ textDecoration: 'underline' }}
+            rounded="full"
+            fontSize="xs"
+            letterSpacing="tight"
+            colorScheme="purple"
+            px="4"
+            py="1"
           >
-            <Heading size="md" as="h3" mb={2} fontWeight="medium">
-              {title}
-            </Heading>
-            <Text
-              color="gray.500"
-              minWidth="105px"
-              textAlign={['left', 'right']}
-              mb={[4, 0]}
-            ></Text>
-          </Flex>
-          <Text color={secondaryTextColor[colorMode]}>{summary}</Text>
+            Updated: {publishedAt}
+          </Badge>
         </Box>
-      </Link>
-    </NextLink>
+      </Flex>
+    </>
   );
 };
 

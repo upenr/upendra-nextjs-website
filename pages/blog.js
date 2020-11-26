@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NextSeo } from 'next-seo';
-
+import * as moment from 'moment';
+import { SearchIcon } from '@chakra-ui/icons';
 import {
   useColorMode,
   Heading,
@@ -18,7 +19,7 @@ import {
   Link,
   Image,
   Box
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 import Container from '../components/Container';
 import BlogPost from '../components/BlogPost';
@@ -29,7 +30,7 @@ import { frontMatter as usachina } from './blog/usa-and-china.mdx';
 
 const url = 'https://upenr.vercel.app/blog';
 const title = 'Blog: Upendra Rajan';
-const description = 'Thoughts on IT, businesses, countries, technology and even my personal life.';
+const description = 'Upendra Rajan\'s Blog Search Website';
 
 const Blog = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -42,18 +43,26 @@ const Blog = () => {
     light: '#009688',
     dark: '#009688'
   };
-  const secondaryTextColor = {
-    light: 'gray.700',
-    dark: 'gray.400'
+  const newColor = {
+    light: '#009688',
+    dark: '#DDAF94'
   };
 
   const filteredBlogPosts = blogs1
     .sort(
-      (a, b) =>
-        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
+      (a, b) => {
+        if (new Date(a.publishedAt) < new Date(b.publishedAt)) {
+          return 1;
+        }
+        if (new Date(a.publishedAt) > new Date(b.publishedAt)) {
+          return -1;
+        }
+        // a must be equal to b
+        return 0;
+      }
     )
     .filter((frontMatter) => {
-      const concat = frontMatter.summary + frontMatter.title;
+      const concat = frontMatter.summary + frontMatter.title + frontMatter.publishedAt + frontMatter.type;
       return concat.toLowerCase().includes(searchValue.toLowerCase());
     });
 
@@ -78,15 +87,37 @@ const Blog = () => {
           mb={4}
         >
           <InputGroup my={0} mr={100} ml={100} w="70%">
-            <Input
-              aria-label="Search blog title or summary"
+          <Input
+              aria-label="Search"
+              borderColor="blue.500"
               onChange={(e) => setSearchValue(e.target.value)}
-              placeholder="Search blog title or summary"
+              placeholder="Search"
+              value={searchValue}
+              autoFocus
+              onFocus={e => e.currentTarget.select()}
             />
             <InputRightElement>
-              <IconButton icon="search" color={textColor1[colorMode]} />
+            <IconButton
+                variant="unstyled"
+                mb={1}
+                borderColor="blue.500"
+                icon={<SearchIcon />}
+                color={textColor1[colorMode]}
+              />
             </InputRightElement>
           </InputGroup>
+          <Text mt={2} fontSize="xs" color="gray.500">
+            There are{' '}
+            <Text
+              as="span"
+              fontSize="xs"
+              fontWeight="semibold"
+              color={newColor[colorMode]}
+            >
+              {filteredBlogPosts.length}
+            </Text>{' '}
+            blogs below.
+          </Text>
         </Flex>
         {!searchValue && (
           <Flex
@@ -94,20 +125,22 @@ const Blog = () => {
             justifyContent="center"
             alignItems="center"
             m="0 auto"
+            mb={0}
           ></Flex>
         )}
         <Flex
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          mt={20}
+          mt={8}
+          mb={0}
         >
           <Heading
             letterSpacing="tight"
-            mb={4}
+            mb={8}
             size="xl"
             fontWeight={700}
-            color={textColor1[colorMode]}
+            color={newColor[colorMode]}
           >
             All Posts
           </Heading>
@@ -120,7 +153,9 @@ const Blog = () => {
           >
             {!filteredBlogPosts.length && 'No posts found.'}
             {filteredBlogPosts.map((frontMatter) => (
-              <BlogPost key={frontMatter.title} {...frontMatter} />
+              <BlogPost key={frontMatter.title + frontMatter.publishedAt}
+              handleSearch={(anyKey) => setSearchValue(anyKey)}
+              {...frontMatter} />
             ))}
           </Flex>
           <br />
