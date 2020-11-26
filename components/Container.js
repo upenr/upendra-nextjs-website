@@ -4,12 +4,16 @@ import {
   useColorMode,
   Button,
   Flex,
-  Avatar,
-  Box,
+  Icon,
   IconButton,
+  Avatar,
+  useColorModeValue,
+  Box,
   Tooltip
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
+import { SunIcon, MoonIcon } from '@chakra-ui/icons';
 import styled from '@emotion/styled';
+import * as myIcons from '../styles/newtheme';
 
 import Footer from './Footer';
 
@@ -17,13 +21,16 @@ const StickyNav = styled(Flex)`
   position: sticky;
   z-index: 0;
   top: 0;
-  backdrop-filter: saturate(180%) blur(20px);
-  transition: background-color 0.1 ease-in-out;
+  backdrop-filter: saturate(100%) blur(5px);
+  transition: background-color 0.2 ease-in-out;
 `;
 
 const Container = ({ children }) => {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { toggleColorMode } = useColorMode();
+  const text = useColorModeValue('dark', 'light');
+  const SwitchIcon = useColorModeValue(MoonIcon, SunIcon);
 
+  const { colorMode } = useColorMode();
   const bgColor = {
     light: 'white',
     dark: 'gray.900'
@@ -43,20 +50,26 @@ const Container = ({ children }) => {
         flexDirection="row"
         justifyContent="space-between"
         alignItems="flex-end"
-        bg={navBgColor[colorMode]}
         as="nav"
         p={0}
         mt={[0, 0]}
         mb={8}
-        mx="0"
+        mx={0}
       >
-        <Tooltip label="Dark Mode" placement="bottom">
-          <IconButton
-            aria-label="Toggle dark mode"
-            icon={colorMode === 'dark' ? 'sun' : 'moon'}
-            onClick={toggleColorMode}
-          />
-        </Tooltip>
+        <Flex justifyContent="flex-start" alignItems="flex-start">
+          <Tooltip label="Dark Mode Toggle" placement="bottom">
+            <IconButton
+              aria-label={`Switch to ${text} mode`}
+              variant="outline"
+              color="current"
+              onClick={toggleColorMode}
+              icon={<SwitchIcon />}
+            />
+          </Tooltip>
+          {/* <myIcons.BookIcon boxSize={8} ml='4' mt='1' /> */}
+          {/* <Avatar bg="white.500" name="IBM Systems Training" src="/static/images/logo.png" /> */}
+        </Flex>
+
         <Box>
           <NextLink href="/blog" passHref>
             <Button as="a" variant="ghost" p={[1, 4]}>
@@ -70,14 +83,7 @@ const Container = ({ children }) => {
           </NextLink>
         </Box>
       </StickyNav>
-      <Flex
-        as="main"
-        justifyContent="center"
-        flexDirection="column"
-        bg={bgColor[colorMode]}
-        color={primarytextColor[colorMode]}
-        px={8}
-      >
+      <Flex as="main" justifyContent="center" flexDirection="column" px={8}>
         {children}
         <Footer />
       </Flex>

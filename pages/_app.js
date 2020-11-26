@@ -1,27 +1,17 @@
-import React, { useEffect } from 'react';
 import { MDXProvider } from '@mdx-js/react';
-import { Global, css } from '@emotion/core';
 import { DefaultSeo } from 'next-seo';
-import {
-  ThemeProvider,
-  CSSReset,
-  ColorModeProvider,
-  useColorMode
-} from '@chakra-ui/core';
-import Router from 'next/router';
-import * as Fathom from 'fathom-client';
-
-import theme from '../styles/theme';
-import { prismLightTheme, prismDarkTheme } from '../styles/prism';
+import { ChakraProvider, ColorModeProvider, useColorMode } from '@chakra-ui/react';
+import Head from 'next/head';
+import { Global, css } from '@emotion/react';
 import MDXComponents from '../components/MDXComponents';
 import SEO from '../next-seo.config';
+import { prismLightTheme, prismDarkTheme } from '../styles/prism';
 
 const GlobalStyle = ({ children }) => {
 const { colorMode } = useColorMode();
 
   return (
     <>
-      <CSSReset />
       <Global
         styles={css`
           ${colorMode === 'light' ? prismLightTheme : prismDarkTheme};
@@ -49,30 +39,41 @@ const { colorMode } = useColorMode();
   );
 };
 
-Router.events.on('routeChangeComplete', () => {
-  Fathom.trackPageview();
-});
-
 const App = ({ Component, pageProps }) => {
-  useEffect(() => {
-    if (process.env.NODE_ENV === 'production') {
-      Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
-        includedDomains: ['upenr.vercel.app']
-      });
-    }
-  }, []);
 
   return (
-    <ThemeProvider theme={theme}>
+  <>
+    <DefaultSeo {...SEO} />
+      <Head>
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/static/favicons/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/static/favicons/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/static/favicons/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/static/favicons/site.webmanifest" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
+      </Head>
+      <ChakraProvider>
       <MDXProvider components={MDXComponents}>
-        <ColorModeProvider value="light">
           <GlobalStyle>
-            <DefaultSeo {...SEO} />
             <Component {...pageProps} />
           </GlobalStyle>
-        </ColorModeProvider>
       </MDXProvider>
-    </ThemeProvider>
+      </ChakraProvider>
+    </>
   );
 };
 

@@ -9,8 +9,8 @@ import {
   Text,
   Divider,
   useColorMode
-} from '@chakra-ui/core';
-import { jsx } from '@emotion/core';
+} from '@chakra-ui/react';
+import { jsx } from '@emotion/react';
 import NextLink from 'next/link';
 
 const Table = (props) => (
@@ -58,7 +58,7 @@ const CustomLink = (props) => {
   };
 
   const href = props.href;
-  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
+  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#') || href.startsWith('##') || href.startsWith('###'));
 
   if (isInternalLink) {
     return (
@@ -138,6 +138,27 @@ const DocsHeading = (props) => (
         </PseudoBox>
       )}
     </Box>
+    <Box pointerEvents="auto">
+      {props.children}
+      {props.id && (
+        <PseudoBox
+          aria-label="anchor"
+          as="a"
+          color="blue.500"
+          fontWeight="normal"
+          outline="none"
+          _focus={{
+            opacity: 1,
+            boxShadow: 'outline'
+          }}
+          opacity="0"
+          ml="0.375rem"
+          href={`##${props.id}`}
+        >
+          ##
+        </PseudoBox>
+      )}
+    </Box>
   </Heading>
 );
 
@@ -156,7 +177,7 @@ const MDXComponents = {
   h2: (props) => <DocsHeading as="h2" fontWeight="bold" size="lg" {...props} />,
   h3: (props) => <DocsHeading as="h3" size="md" fontWeight="bold" {...props} />,
   inlineCode: (props) => (
-    <Code variantColor="yellow" fontSize="0.84em" {...props} />
+    <Code colorScheme="yellow" fontSize="0.84em" {...props} />
   ),
   kbd: Kbd,
   br: (props) => <Box height="24px" {...props} />,

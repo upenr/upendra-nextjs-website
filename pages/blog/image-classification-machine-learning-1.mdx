@@ -1,59 +1,55 @@
 ---
-title: 'Basics of Image Classification in Machine Learning Using IBM PowerAI (Part 1)'
+title: 'Basics of Image Classification in Machine Learning Using IBM PowerAI Part 1'
 publishedAt: '2018-02-18'
 summary: "Image classification has become one of the key pilot use cases for demonstrating machine learning. In this short article, I attempt to write about how to implement such a solution using IBM PowerAI, and compare GPU and CPU performances while running this on IBM Power Systems."
 image: '/static/images/machinelearning/image014.png'
+type: 'Blog'
 ---
+
 ![Image14](/static/images/machinelearning/image014.png)
 Image 1. [IBM Power Systems](https://www.ibm.com/power)
 
-Introduction
-============
+# Introduction
 
 Image classification has become one of the key pilot use cases for demonstrating machine learning. In this short article, I attempt to write about how to implement such a solution using IBM PowerAI, and compare GPU and CPU performances while running this on IBM Power Systems.
 
-Artificial Intelligence
-=======================
+# Artificial Intelligence
 
 Artificial Intelligence is currently seen as a branch of computer science that deals with making computers perform tasks like visual recognition, speech identification, cognitive decision-making, language translation etc, which are traditionally attributed to human intelligence.
 
-Machine Learning
-================
+# Machine Learning
 
 Machine Learning, commonly viewed as an application of Artificial Intelligence, deals with giving the systems an ability to learn and improve with experience, without explicitly coding all tasks.
 
-Deep Learning
-=============
+# Deep Learning
 
 Deep Learning is a subset of Machine Learning where the systems can learn with labelled training data (supervised) or unlabeled training data (unsupervised). Deep Learning typically uses a hierarchical level of artificial neural networks to carry out a task.
 
-Artificial Neural Networks
-==========================
+# Artificial Neural Networks
 
 Artificial Neural Networks are systems inspired by biological neural networks and can perform certain tasks like image classification with amazing accuracy. For example, for image classification, a set of images of an animal are provided with labeling. This is the training data. The Artificial Neural Network, over a series of steps (or layers), helps the system learn the ability to classify unlabeled images (An image of an Orangutan in the example shown in this article) as belonging to a certain group while coming up with accuracy scores.
 
 There are several applications of deep learning for your business, ranging from cellphone personal assistants to self-driving cars where rapidly changing patterns are used to classify objects in real-time.
 
-What is IBM PowerAI?
-====================
+# What is IBM PowerAI?
 
 IBM PowerAI software lets you easily run all the popular machine learning frameworks with minimal effort on your IBM POWER9 servers which contain a GPU. CPUs were designed and built for serial processing and contain a small number of cores, whereas GPUs can contain thousands of smaller cores and rely on parallel processing of tasks. Tasks meant for machine learning are key applications of GPUs. Check out the IBM Power System [AC922](https://www.ibm.com/us-en/marketplace/power-systems-ac922) servers, touted as one of the best servers in the market for running enterprise AI tasks. IBM PowerAI currently includes the following frameworks;
-
 ![Image15](/static/images/machinelearning/image015.jpeg)
 Image 2. Source: [https://www.ibm.com/us-en/marketplace/deep-learning-platform](https://www.ibm.com/us-en/marketplace/deep-learning-platform)
 
-Current setup
-=============
+Source: [https://www.ibm.com/us-en/marketplace/deep-learning-platform](https://www.ibm.com/us-en/marketplace/deep-learning-platform)
 
-For this demo, I used a container on a VM running Ubuntu on Power (**ppc64le**), hosted on [Nimbix Cloud](https://www.nimbix.net/).
+# Current setup
+
+For this demo, I used a container on a VM running Ubuntu on Power ( **ppc64le** ), hosted on [Nimbix Cloud](https://www.nimbix.net/).
 
 A Container is a running instance of an image. An image is a template which contains the OS, Software and application code, all bundled in one file. Images are defined using a Dockerfile, which is a list of steps to configure the image. The Dockerfile is built to create an image, and the image is run to get a running container. To run the image, you need to have Docker Engine installed and configured on the VM.
 
 Here is the [Dockerfile](https://github.com/ibmsoe/Dockerfiles/blob/master/powerai-examples/Dockerfile) I used, written by [Indrajit Poddar](https://www.linkedin.com/in/ipoddar). This is taken from [this Github](https://github.com/ibmsoe/Dockerfiles/blob/master/powerai-examples/Dockerfile) page.
 
-This builds an image with Jupyter Notebook, iTorch Kernel (we’ll discuss this in the second part) and some base TensorFlow examples.
+This builds an image with Jupyter Notebook, iTorch Kernel (we&#39;ll discuss this in the second part) and some base TensorFlow examples.
 
-**TensorFlow** is an open source, scalable library for Machine Learning applications, and is based on the concept of a data flow graph which can be built and executed. A graph can contain two components, nodes and edges (or tensors). It comes with a Python API, and is easy to assemble a net, assign parameters and run your training models.
+**TensorFlow ** is an open source, scalable library for Machine Learning applications, and is based on the concept of a data flow graph which can be built and executed. A graph can contain two components, nodes and edges (or tensors). It comes with a Python API, and is easy to assemble a net, assign parameters and run your training models.
 
 The steps below were demonstrated by [Indrajit Poddar](https://www.linkedin.com/in/ipoddar). He has built a test image on Nimbix Cloud which will run the aforementioned services when deployed, in a few minutes.
 
@@ -88,24 +84,34 @@ http://0.0.0.0:8890/?token=a9448c725c4ce2af597a61c47dcdb4d1582344d494bd132f :: /
 root@JARVICENAE-0A0A1841:/usr/lib/nvidia-384#
 ```
 
-Starting Image Classification
-=============================
+# Starting Image Classification
 
-What is Caffe?
---------------
+# What is Caffe?
 
-**Caffe** (Convolutional Architecture for Fast Feature Embedding) was developed at the Berkeley Vision and Learning Center. It is an open source framework for performing tasks like image classification. It supports **CUDA**, Convolutional Neural Networks, has pre-trained models, and is therefore a good choice for this demo.
+**Caffe ** (Convolutional Architecture for Fast Feature Embedding) was developed at the Berkeley Vision and Learning Center. It is an open source framework for performing tasks like image classification. It supports  **CUDA** , Convolutional Neural Networks, has pre-trained models, and is therefore a good choice for this demo.
 
-We’ll use Python to perform all the tasks. The steps below were done via Jupyter Notebook. First, let’s set up Python, [Numpy](http://www.numpy.org/), and [Matplotlib](https://matplotlib.org/).
+We&#39;ll use Python to perform all the tasks. The steps below were done via Jupyter Notebook. First, let&#39;s set up Python, [Numpy](http://www.numpy.org/), and [Matplotlib](https://matplotlib.org/).
 
+```bash
+import numpy as np
+import matplotlib.pyplot as plt
+# display plots in this notebook
+%matplotlib inline
+# set display defaults
+plt.rcParams[‘figure.figsize’] = (10, 10) # large images
+plt.rcParams[‘image.interpolation’] = ‘nearest’ # don’t interpolate: show square pixels
+plt.rcParams[‘image.cmap’] = ‘gray’ # use grayscale output rather than a (potentially misleading) color heatmap
+# Then, we load Caffe. The caffe module needs to be on the Python path;
+# we’ll add it here explicitly.
+import sys
+caffe_root = ‘../’ # this file should be run from {caffe_root}/examples (otherwise change this line)
+sys.path.insert(0, caffe_root + ‘python’)
+import caffe
 ```
-import numpy as npimport matplotlib.pyplot as plt\# display plots in this notebook%matplotlib inline\# set display defaultsplt.rcParams\[‘figure.figsize’\] = (10, 10) # large imagesplt.rcParams\[‘image.interpolation’\] = ‘nearest’ # don’t interpolate: show square pixelsplt.rcParams\[‘image.cmap’\] = ‘gray’ # use grayscale output rather than a (potentially misleading) color heatmap\# Then, we load Caffe. The caffe module needs to be on the Python path;\# we’ll add it here explicitly.import syscaffe\_root = ‘../’ # this file should be run from {caffe\_root}/examples (otherwise change this line)sys.path.insert(0, caffe\_root + ‘python’)import caffe
-```
 
-What is Caffenet?
-=================
+# What is Caffenet?
 
-**Caffenet** is a convolutional neural network written to interface with **CUDA**, with the primary aim of classifying images. Caffenet is a variant of **Alexnet**. A presentation from 2015 by the creators of Alexnet is [here](http://vision.stanford.edu/teaching/cs231b_spring1415/slides/alexnet_tugce_kyunghee.pdf). In the code below, we download a pre-trained model.
+**Caffenet ** is a convolutional neural network written to interface with  **CUDA** , with the primary aim of classifying images. Caffenet is a variant of  **Alexnet**. A presentation from 2015 by the creators of Alexnet is [here](http://vision.stanford.edu/teaching/cs231b_spring1415/slides/alexnet_tugce_kyunghee.pdf). In the code below, we download a pre-trained model.
 
 ```bash
 import os
@@ -158,8 +164,7 @@ Here is the output.
 mean-subtracted values: \[(‘B’, 104.0069879317889), (‘G’, 116.66876761696767), (‘R’, 122.6789143406786)\]
 ```
 
-Classification
-==============
+# Classification
 
 Here, we set the default size of the images. This can be changed later depending on your input.
 
@@ -199,6 +204,7 @@ image.jpg           100%[===================>]   1.38M  5.25MB/s    in 0.3s
 Image 3. Here's our input image
 
 Now, let’s classify the image.
+
 ```bash
 # copy the image data into the memory allocated for the net
 net.blobs[‘data’].data[…] = transformed_image
@@ -247,8 +253,7 @@ probabilities and labels:
 (7.259626e-05, 'n02488291 langur')]
 ```
 
-Analyzing GPU Performance
-=========================
+# Analyzing GPU Performance
 
 Here is the time taken to perform the classification on the CPU only mode.
 
@@ -277,8 +282,8 @@ Here is the output.
 OUTPUT: 1 loop, best of 3: 11.4 ms per loop
 ```
 
-That is an improvement of ***3048.6*** milliseconds! This concludes the first part of this blog. I apologize for grammatical errors, if any.
+That is an improvement of **_3048.6_** milliseconds! This concludes the first part of this blog. I apologize for grammatical errors, if any.
 
 In the next part, we will take a look at how to train your own model using NVIDIA Digits and how to use Torch.
 
-Disclaimer: The postings on this site are my own and don’t necessarily represent IBM’s positions, strategies or opinions.  
+Disclaimer: The postings on this site are my own and don’t necessarily represent IBM’s positions, strategies or opinions.
