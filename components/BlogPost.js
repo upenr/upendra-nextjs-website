@@ -12,12 +12,16 @@ import {
   Link,
   Tooltip
 } from '@chakra-ui/react';
+import fetcher from '../lib/fetcher';
 
 const BlogPost = (frontMatter) => {
   const slug = frontMatter.__resourcePath
     .replace('blog\\', '') //For Windows
     .replace('blog/', '')
     .replace('.mdx', '');
+
+  const { data } = useSWR(`/api/page-views?id=${slug}`, fetcher);
+  const views = data?.total;
 
   const { title, summary, publishedAt, type } = frontMatter;
   const { colorMode } = useColorMode();
@@ -71,6 +75,14 @@ const BlogPost = (frontMatter) => {
               <Heading size="md" as="h3" mb={2} fontWeight="medium">
                 {title}
               </Heading>
+              <Text
+                color="gray.500"
+                minWidth="105px"
+                textAlign={['left', 'right']}
+                mb={[4, 0]}
+              >
+                {`${views ? format(views) : '–––'} views`}
+              </Text>
             </Flex>
             <Text mb={2} color={secondaryTextColor[colorMode]}>
               {summary}
