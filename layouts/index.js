@@ -136,7 +136,7 @@ export default function BlogLayout({ children, frontMatter }) {
             </Flex>
           </Flex>
 
-          <Text fontSize="sm" minWidth="100px">
+          <Text color="gray.500" fontSize="sm" minWidth="100px">
             {` • `}
             {frontMatter.readingTime.text}
           </Text>
