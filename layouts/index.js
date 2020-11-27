@@ -26,6 +26,7 @@ import {
 
 import Container from '../components/Container';
 import BlogSeo from '../components/BlogSeo';
+import ViewCounter from '../components/ViewCounter';
 
 export default function BlogLayout({ children, frontMatter }) {
   const slug = frontMatter.__resourcePath
@@ -138,6 +139,10 @@ export default function BlogLayout({ children, frontMatter }) {
           <Text fontSize="sm" minWidth="100px">
             {` • `}
             {frontMatter.readingTime.text}
+          </Text>
+          <Text color="gray.500" fontSize="sm" minWidth="100px">
+            {` • `}
+            <ViewCounter id={slug} />
           </Text>
         </Flex>
         <Divider mt="0" width="97%" mb="4" orientation="horizontal" />
