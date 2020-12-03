@@ -11,3 +11,4 @@ public/sitemap.xml
 service-account.json
 MainBook.xlsx
 *.bak
+/bfg-1.13.0.jar
