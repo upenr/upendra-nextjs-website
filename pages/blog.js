@@ -30,7 +30,7 @@ import { frontMatter as usachina } from './blog/usa-and-china.mdx';
 
 const url = 'https://upenr.vercel.app/blog';
 const title = 'Blog: Upendra Rajan';
-const description = "Upendra Rajan's Blog Search Website";
+const description = "Upendra Rajan's Blog Search Page";
 
 const Blog = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -50,22 +50,42 @@ const Blog = () => {
 
   const filteredBlogPosts = blogs1
     .sort((a, b) => {
-      if (new Date(a.publishedAt) < new Date(b.publishedAt)) {
+      if (new Date(a.lastPublishedOn) < new Date(b.lastPublishedOn)) {
         return 1;
       }
-      if (new Date(a.publishedAt) > new Date(b.publishedAt)) {
+      if (new Date(a.lastPublishedOn) > new Date(b.lastPublishedOn)) {
         return -1;
       }
       // a must be equal to b
       return 0;
     })
-    .filter((frontMatter) => {
+/*     .filter((frontMatter) => {
       const concat =
         frontMatter.summary +
         frontMatter.title +
-        frontMatter.publishedAt +
+        frontMatter.lastPublishedOn +
         frontMatter.type;
       return concat.toLowerCase().includes(searchValue.toLowerCase());
+    }); */
+    .filter((frontMatter) => {
+      // Get the front matter into a string, separated by spaces
+      //const concat = Object.values(frontMatter).join(" ").toLowerCase();
+      const concat = [
+        frontMatter.summary,
+        frontMatter.title,
+        frontMatter.lastPublishedOn,
+        frontMatter.type
+      ]
+        .join(' ')
+        .toLowerCase();
+      // Look for a string in quotes, if not then just find a word
+      const regex = /\"([\w\s\\\-]+)\"|([\w\\\-]+)/g;
+      // Get all the queries
+      const queries = [...searchValue.toLowerCase().matchAll(regex)].map(
+        (arr) => arr[1] || arr[2]
+      );
+      // Make sure that every query is satisfied
+      return queries.every((q) => concat.includes(q));
     });
 
   return (
@@ -156,7 +176,7 @@ const Blog = () => {
             {!filteredBlogPosts.length && 'No posts found.'}
             {filteredBlogPosts.map((frontMatter) => (
               <BlogPost
-                key={frontMatter.title + frontMatter.publishedAt}
+                key={frontMatter.title + frontMatter.lastPublishedOn}
                 handleSearch={(anyKey) => setSearchValue(anyKey)}
                 {...frontMatter}
               />

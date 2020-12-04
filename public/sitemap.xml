@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://upenr.vercel.app/404</loc>
+  </url>
+
+  <url>
+    <loc>https://upenr.vercel.app/blog</loc>
+  </url>
+
+  <url>
+    <loc>https://upenr.vercel.app/</loc>
+  </url>
+
+  <url>
+    <loc>https://upenr.vercel.app/blog/alphabet-apple</loc>
+  </url>
+
+  <url>
+    <loc>https://upenr.vercel.app/blog/cern-data</loc>
+  </url>
+
+  <url>
+    <loc
+      >https://upenr.vercel.app/blog/image-classification-machine-learning-1</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://upenr.vercel.app/blog/image-classification-machine-learning-2</loc
+    >
+  </url>
+
+  <url>
+    <loc>https://upenr.vercel.app/blog/openstack-on-laptop</loc>
+  </url>
+
+  <url>
+    <loc>https://upenr.vercel.app/blog/stock-returns-finder</loc>
+  </url>
+
+  <url>
+    <loc
+      >https://upenr.vercel.app/blog/twitter-ibm-watson-ai-personality-insights</loc
+    >
+  </url>
+
+  <url>
+    <loc>https://upenr.vercel.app/blog/usa-and-china</loc>
+  </url>
+</urlset>

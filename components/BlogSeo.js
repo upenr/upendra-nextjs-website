@@ -1,8 +1,8 @@
 import React from 'react';
 import { NextSeo, ArticleJsonLd } from 'next-seo';
 
-const BlogSeo = ({ title, summary, publishedAt, url, image }) => {
-  const date = new Date(publishedAt).toISOString();
+const BlogSeo = ({ title, summary, lastPublishedOn, url, image }) => {
+  const date = new Date(lastPublishedOn).toISOString();
   const featuredImage = {
     url: `https://upenr.vercel.app${image}`,
     alt: title

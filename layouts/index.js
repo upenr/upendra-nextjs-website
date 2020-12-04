@@ -105,7 +105,7 @@ export default function BlogLayout({ children, frontMatter }) {
             </Link>
             <Text fontSize="sm">
               {'on '}
-              {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}
+              {format(parseISO(frontMatter.lastPublishedOn), 'MMMM dd, yyyy')}
             </Text>
 
             <Flex ml={6}>

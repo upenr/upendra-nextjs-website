@@ -23,7 +23,7 @@ const BlogPost = (frontMatter) => {
   const { data } = useSWR(`/api/page-views?id=${slug}`, fetcher);
   const views = data?.total;
 
-  const { title, summary, publishedAt, type } = frontMatter;
+  const { title, summary, lastPublishedOn, type } = frontMatter;
   const { colorMode } = useColorMode();
   const secondaryTextColor = {
     light: 'gray.700',
@@ -34,7 +34,7 @@ const BlogPost = (frontMatter) => {
 
   const scrollSearch = (myKey) => {
     window.scrollTo(0, 0);
-    frontMatter.handleSearch(myKey);
+    frontMatter.handleSearch('"' + myKey + '"');
   };
 
   return (
@@ -95,7 +95,7 @@ const BlogPost = (frontMatter) => {
           <Badge
             textTransform="capitalcase"
             cursor="pointer"
-            onClick={() => scrollSearch(publishedAt)}
+            onClick={() => scrollSearch(lastPublishedOn)}
             _hover={{ textDecoration: 'underline' }}
             rounded="full"
             fontSize="xs"
@@ -104,7 +104,7 @@ const BlogPost = (frontMatter) => {
             px="4"
             py="1"
           >
-            Updated: {publishedAt}
+            Updated: {lastPublishedOn}
           </Badge>
         </Box>
       </Flex>
