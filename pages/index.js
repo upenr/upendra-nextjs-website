@@ -21,8 +21,10 @@ import Container from '../components/Container';
 import ProjectCard from '../components/ProjectCard';
 import { CustomLink } from '../components/MDXComponents';
 
-const url = 'https://upenr.vercel.app';
+const url = 'https://upenr.vercel.app/';
 const title = 'About Me: Upendra Rajan';
+const description = "Upendra Rajan's Blog Search Website";
+
 const MotionBox = motion.custom(Box);
 const Index = () => {
   const { colorMode } = useColorMode();
@@ -47,10 +49,12 @@ const Index = () => {
     <>
       <NextSeo
         title={title}
+        description={description}
         canonical={url}
         openGraph={{
           url,
-          title
+          title,
+          description
         }}
       />
       <Container>
@@ -277,8 +281,7 @@ const Index = () => {
               <br />· And many other virtual client and Business Partner events
             </Text>
             <Heading letterSpacing="tight" mb={4} as="h2" size="xl">
-              Cities Visited 🏙️
-            </Heading>
+              Cities Visited 🏙�?            </Heading>
             <Box mb={4} width="100%">
               <iframe
                 height="300px"
