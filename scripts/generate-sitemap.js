@@ -8,6 +8,7 @@ const prettier = require('prettier');
   const pages = await globby([
     'pages/**/*{.js,.mdx}',
     '!pages/_*.js',
+	'!pages/404.js',
     '!pages/api'
   ]);
   const sitemap = `
