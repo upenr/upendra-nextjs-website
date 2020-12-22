@@ -189,6 +189,12 @@ const Index = () => {
             <Heading letterSpacing="tight" mb={4} mt={4} as="h2" size="xl">
               Portfolio
             </Heading>
+			<ProjectCard
+              title="IBM Certified Technical Specialist - Expert"
+              description="View my verified achievement from IBM. Technical Specialist Profession Certification - Level 2. An IBM Certified Specialist leads teams to adapt new technology & processes to deliver high quality solutions that provide business value for the client."
+              href="https://www.youracclaim.com/badges/1b9aaf75-5317-4033-8a8e-9079df510c66/"
+              icon={myIcons.IBMIcon}
+            />
             <ProjectCard
               title="Manager of Worldwide IBM Storage Technical Client Training and Related Services"
               description="Managed a team of IT specialists, consultants and content developers, wrote and published technical content with hands-on access to enterprise clients, business partners and IBMers. Click to view a website I designed in my free time regarding this."
@@ -196,16 +202,10 @@ const Index = () => {
               icon={myIcons.StorageIcon}
             />
             <ProjectCard
-              title="OpenStack Implementation in Enterprise Data Centers"
+              title="OpenStack and other DevOps tools Implementation in Enterprise Data Centers"
               description="IBM Cloud PowerVC Manager, an infrastructure-as-a-service (IaaS) offering, provides a self-service cloud portal for IBM Power Systems and is built on OpenStack. Implemented an OpenStack based private cloud environment to manage enterprise compute systems running the IBM ppc64 architecture."
-              href="https://www.ibm.com/training/course/QZC30G"
-              icon={myIcons.OpenStackIcon}
-            />
-            <ProjectCard
-              title="Ansible, Chef and Puppet in Enterprise Environments"
-              description="This IBM-authorized course addresses the concepts involved in planning, deploying and implementing Ansible, Chef and Puppet, and shows how to integrate these tools in an enterprise cloud environment."
               href="https://www.ibm.com/training/course/QZC50G"
-              icon={myIcons.AnsibleIcon}
+              icon={myIcons.OpenStackIcon}
             />
             <ProjectCard
               title="Return Finder: ROCE, ROE, ROA of any stock"
@@ -281,7 +281,7 @@ const Index = () => {
               <br />· And many other virtual client and Business Partner events
             </Text>
             <Heading letterSpacing="tight" mb={4} as="h2" size="xl">
-              Cities Visited 🏙�?            </Heading>
+              Cities Visited 🏙            </Heading>
             <Box mb={4} width="100%">
               <iframe
                 height="300px"
