@@ -9,15 +9,15 @@ const SEO = {
     type: 'website',
     locale: 'en_US',
     url: 'https://upenr.vercel.app',
-    image: 'https://upenr.vercel.app/static/images/upen.jpg',
+    image: 'https://upenr.vercel.app/static/images/logo.png',
     title,
     description,
     images: [
       {
-        url: 'https://upenr.vercel.app/static/images/upen.jpg',
+        url: 'https://upenr.vercel.app/static/images/logo.png',
         alt: 'Upendra Rajan',
-        width: 400,
-        height: 400
+        width: 512,
+        height: 512
       }
     ]
   },
