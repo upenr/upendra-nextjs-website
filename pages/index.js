@@ -20,6 +20,7 @@ import { NextSeo } from 'next-seo';
 import Container from '../components/Container';
 import ProjectCard from '../components/ProjectCard';
 import { CustomLink } from '../components/MDXComponents';
+import Subscribe from '../components/Subscribe';
 
 const url = 'https://upenr.vercel.app/';
 const title = 'About Me: Upendra Rajan';
@@ -292,6 +293,17 @@ const Index = () => {
             </Box>
           </Flex>
         </Stack>
+        <Flex
+          align="center"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+          maxWidth="100%"
+          mb="10"
+          mt="0"
+        >
+          <Subscribe />
+        </Flex>
       </Container>
     </>
   );
