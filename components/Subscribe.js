@@ -26,7 +26,7 @@ export default function Subscribe() {
   const { colorMode } = useColorMode();
   const bgColor = {
     light: 'twitter.50',
-    dark: 'twitter.800'
+    dark: 'black.800'
   };
   const borderColor = {
     light: 'twitter.800',
@@ -96,7 +96,7 @@ export default function Subscribe() {
           </Button>
         </InputRightElement>
       </InputGroup>
-      <Text fontSize="md">{`${subscriberCount || '-'} subscribers`}</Text>
+      <Text fontSize="md">Current subscribers: {`${subscriberCount || '-'}`}</Text>
     </Box>
   );
 }
