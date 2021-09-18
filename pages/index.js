@@ -26,16 +26,15 @@ const url = 'https://upenr.vercel.app/';
 const title = 'About Me: Upendra Rajan';
 const description = "Upendra Rajan's Blog Search Website";
 
-const MotionBox = motion.custom(Box);
 const Index = () => {
   const { colorMode } = useColorMode();
   const textColor = {
     light: '#009688',
-    dark: '#DDAF94'
+    dark: '#009688'
   };
   const newColor = {
     light: '#000000',
-    dark: '#DDAF94'
+    dark: '#009688'
   };
   const secondaryTextColor = {
     light: 'gray.800',
@@ -75,12 +74,14 @@ const Index = () => {
               size="2xl"
               m="0 auto"
             >
-              <MotionBox whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                 Hi, I’m{' '}
-                <Text as="span" color={newColor[colorMode]}>
+                <Text as="span" color={newColor[colorMode]}
+				  bgGradient="linear(to-l, #009688, #4dd0e1)"
+  bgClip="text"
+  fontSize="6xl"
+  fontWeight="bold">
                   Upendra Rajan
                 </Text>
-              </MotionBox>
             </Heading>
             <Text fontSize="sm" color={secondaryTextColor[colorMode]}>
               Welcome. This is a blog-search website I built to understand page
@@ -131,22 +132,12 @@ const Index = () => {
               About Me
             </Heading>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
-              I’m Upendra. I live in Raleigh, NC and I’m a Senior IT Management
-              Consultant at&nbsp;
-              <CustomLink href="https://ibm.com">IBM</CustomLink>. My current
-              focus is on working with IT specialists, consultants and
-              executives in managing and creating{' '}
-              <CustomLink href="https://www.ibm.com/it-infrastructure">
-                IBM Systems
-              </CustomLink>{' '}
-              and cloud computing (IaaS/PaaS) related technical content and
-              client services, and coming up with innovative methods to monetize
-              data center services.
+			I manage a global team of technical specialists and external stakeholders to create IBM Systems and cloud computing (IaaS/PaaS) related technical content and related services, helping monetize systems in our data center. I work closely with IT specialists, consultants and executives to achieve this.
             </Text>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
-              I’ve presented to IT personnel and executives at conferences
-              worldwide about IT infrastructure design and cloud-based product
-              implementations, frequently through labs, live demonstrations and
+              I've presented to IT personnel and executives at technical conferences
+              about infrastructure design and cloud-based product
+              implementations, through hands-on labs, live demonstrations and
               presentations. I read several investment and business related
               books in my free time. I also develop Android applications and
               websites such as this. Follow me on&nbsp;
@@ -190,6 +181,18 @@ const Index = () => {
             <Heading letterSpacing="tight" mb={4} mt={4} as="h2" size="xl">
               Portfolio
             </Heading>
+			 <ProjectCard
+              title="Manager of Worldwide IBM Power and IBM Storage Technical Client Training and Related Services"
+              description="Managed a team of IT specialists, consultants and content developers, wrote and published technical content with hands-on access to enterprise clients, business partners and IBMers. Click to view our official website. I also tried to compile a list of these courses in my own website at systemstraining.vercel.app"
+              href="https://www.ibm.com/training/servers"
+              icon={myIcons.StorageIcon}
+            />
+			 <ProjectCard
+              title="Author of Linux and Private Cloud Administration on IBM Power Systems Specialization on Coursera"
+              description="A Coursera specialization I designed and developed with Red Hat to clarify advanced concepts on Linux system administration and private cloud management, with live hands-on access to IBM Systems."
+              href="https://www.coursera.org/specializations/linux-private-cloud-administration-power-systems"
+              icon={myIcons.CourseraIcon}
+            />
 			<ProjectCard
               title="IBM Certified Technical Specialist - Expert"
               description="View my verified achievement from IBM. Technical Specialist Profession Certification - Level 2. An IBM Certified Specialist leads teams to adapt new technology & processes to deliver high quality solutions that provide business value for the client."
@@ -197,14 +200,8 @@ const Index = () => {
               icon={myIcons.IBMIcon}
             />
             <ProjectCard
-              title="Manager of Worldwide IBM Storage Technical Client Training and Related Services"
-              description="Managed a team of IT specialists, consultants and content developers, wrote and published technical content with hands-on access to enterprise clients, business partners and IBMers. Click to view a website I designed in my free time regarding this."
-              href="https://systemstraining.vercel.app/"
-              icon={myIcons.StorageIcon}
-            />
-            <ProjectCard
               title="OpenStack and other DevOps tools Implementation in Enterprise Data Centers"
-              description="IBM Cloud PowerVC Manager, an infrastructure-as-a-service (IaaS) offering, provides a self-service cloud portal for IBM Power Systems and is built on OpenStack. Implemented an OpenStack based private cloud environment to manage enterprise compute systems running the IBM ppc64 architecture."
+              description="IBM PowerVC, an infrastructure-as-a-service (IaaS) offering, provides a self-service cloud portal for IBM Power Systems and is built on OpenStack. Implemented an OpenStack based private cloud environment to manage enterprise compute systems running the IBM ppc64 architecture."
               href="https://www.ibm.com/training/course/QZC50G"
               icon={myIcons.OpenStackIcon}
             />
@@ -219,12 +216,6 @@ const Index = () => {
               description="This Android app uses IBM Watson AI to get personality insights from anyone's public Twitter profile. You can get insights on several dimensions, such as, personality traits, values, needs and consumer preferences."
               href="https://play.google.com/store/apps/details?id=com.upen.personalityapp"
               icon={myIcons.TwitterIcon}
-            />
-            <ProjectCard
-              title="Linux and Private Cloud Administration on IBM Power Systems Specialization (To be published)"
-              description="A Coursera specialization I designed and developed with Red Hat to clarify advanced concepts on Linux system administration and private cloud management, with live hands-on access to IBM Systems."
-              href="https://www.coursera.org/specializations/linux-private-cloud-administration-power-systems"
-              icon={myIcons.CourseraIcon}
             />
           </Flex>
           <Flex
@@ -250,7 +241,8 @@ const Index = () => {
               </Link>
             </Heading>
             <Text color={secondaryTextColor[colorMode]} mb={8}>
-              · IBM TechU 2020, Istanbul, Virtual IBM TechU
+			  · IBM TechU 2021, Virtual event <br />
+              · IBM TechU 2020, Istanbul and a virtual event
               <br />
               · IBM TechU 2019, Casablanca, Atlanta, Sydney, Prague
               <br />
