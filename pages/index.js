@@ -41,8 +41,8 @@ const Index = () => {
     dark: 'gray.400'
   };
   const whiteTextColor = {
-    light: 'white',
-    dark: 'white'
+    light: '#ffffff',
+    dark: '#ffffff'
   };
 
   return (
@@ -64,7 +64,7 @@ const Index = () => {
           justifyContent="center"
           alignItems="center"
           maxWidth="100%"
-          mt="40"
+          mt="20"
         >
           <Stack spacing={2}>
             <Heading
@@ -73,19 +73,22 @@ const Index = () => {
               as="h1"
               size="2xl"
               m="0 auto"
+              mb="4"
             >
-                Hi, I’m{' '}
-                <Text as="span" color={newColor[colorMode]}
-				  bgGradient="linear(to-l, #009688, #4dd0e1)"
-  bgClip="text"
-  fontSize="6xl"
-  fontWeight="bold">
-                  Upendra Rajan
-                </Text>
+              Hi, I’m{' '}
+              <Text
+                as="span"
+                color={newColor[colorMode]}
+                bgGradient="linear(to-r, cyan.500, teal.500)"
+                bgClip="text"
+                fontSize="6xl"
+                fontWeight="bold"
+              >
+                Upendra Rajan
+              </Text>
             </Heading>
-            <Text fontSize="sm" color={secondaryTextColor[colorMode]}>
-              Welcome. This is a blog-search website I built to understand page
-              pre-rendering on Next.js.
+            <Text textAlign="center" fontSize="sm" color={secondaryTextColor[colorMode]}>
+              Welcome. This is a blog-search website I built to understand Next.js.
             </Text>
             <Flex
               align="center"
@@ -100,13 +103,16 @@ const Index = () => {
                 <Button
                   leftIcon={<SearchIcon />}
                   align="center"
-                  color={textColor[colorMode]}
-                  colorScheme="gray"
+                  color={whiteTextColor[colorMode]}
                   width="30%"
                   size="lg"
                   mt="4"
+                  bgGradient="linear(to-r, teal.500, green.500)"
+                  _hover={{
+                    bgGradient: 'linear(to-r, red.500, yellow.500)'
+                  }}
                 >
-                  Search
+                  Get started
                 </Button>
               </NextLink>
             </Flex>
@@ -132,11 +138,15 @@ const Index = () => {
               About Me
             </Heading>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
-			I manage a global team of technical specialists and external stakeholders to create IBM Systems and cloud computing (IaaS/PaaS) related technical content and related services, helping monetize systems in our data center. I work closely with IT specialists, consultants and executives to achieve this.
+              I manage a global team of technical specialists and external
+              stakeholders to create IBM Systems and cloud computing (IaaS/PaaS)
+              related technical content and related services, helping monetize
+              systems in our data center. I work closely with IT specialists,
+              consultants and executives to achieve this.
             </Text>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
-              I've presented to IT personnel and executives at technical conferences
-              about infrastructure design and cloud-based product
+              I've presented to IT personnel and executives at technical
+              conferences about infrastructure design and cloud-based product
               implementations, through hands-on labs, live demonstrations and
               presentations. I read several investment and business related
               books in my free time. I also develop Android applications and
@@ -172,6 +182,7 @@ const Index = () => {
                 <Image
                   rounded="full"
                   size="300px"
+                  layout="responsive"
                   src="/static/images/upen.jpg"
                   alt="Upendra Rajan"
                   mb={10}
@@ -181,19 +192,19 @@ const Index = () => {
             <Heading letterSpacing="tight" mb={4} mt={4} as="h2" size="xl">
               Portfolio
             </Heading>
-			 <ProjectCard
+            <ProjectCard
               title="Manager of Worldwide IBM Power and IBM Storage Technical Client Training and Related Services"
               description="Managed a team of IT specialists, consultants and content developers, wrote and published technical content with hands-on access to enterprise clients, business partners and IBMers. Click to view our official website. I also tried to compile a list of these courses in my own website at systemstraining.vercel.app"
               href="https://www.ibm.com/training/servers"
               icon={myIcons.StorageIcon}
             />
-			 <ProjectCard
+            <ProjectCard
               title="Author of Linux and Private Cloud Administration on IBM Power Systems Specialization on Coursera"
               description="A Coursera specialization I designed and developed with Red Hat to clarify advanced concepts on Linux system administration and private cloud management, with live hands-on access to IBM Systems."
               href="https://www.coursera.org/specializations/linux-private-cloud-administration-power-systems"
               icon={myIcons.CourseraIcon}
             />
-			<ProjectCard
+            <ProjectCard
               title="IBM Certified Technical Specialist - Expert"
               description="View my verified achievement from IBM. Technical Specialist Profession Certification - Level 2. An IBM Certified Specialist leads teams to adapt new technology & processes to deliver high quality solutions that provide business value for the client."
               href="https://www.youracclaim.com/badges/1b9aaf75-5317-4033-8a8e-9079df510c66/"
@@ -241,7 +252,7 @@ const Index = () => {
               </Link>
             </Heading>
             <Text color={secondaryTextColor[colorMode]} mb={8}>
-			  · IBM TechU 2021, Virtual event <br />
+              · IBM TechU 2021, Virtual event <br />
               · IBM TechU 2020, Istanbul and a virtual event
               <br />
               · IBM TechU 2019, Casablanca, Atlanta, Sydney, Prague
@@ -274,7 +285,8 @@ const Index = () => {
               <br />· And many other virtual client and Business Partner events
             </Text>
             <Heading letterSpacing="tight" mb={4} as="h2" size="xl">
-              Cities Visited 🏙            </Heading>
+              Cities Visited 🏙{' '}
+            </Heading>
             <Box mb={4} width="100%">
               <iframe
                 height="300px"
