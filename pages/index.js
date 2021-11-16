@@ -60,19 +60,28 @@ const Index = () => {
       <Container>
         <Flex
           align="center"
-          flexDirection="column"
+          flexDirection="row"
           justifyContent="center"
           alignItems="center"
           maxWidth="100%"
           mt="20"
         >
-          <Stack spacing={2}>
+          <Image
+                  borderRadius="full"
+                  boxSize="250px"
+                  src="/static/images/upen.jpg"
+                  alt="Upendra Rajan"
+                  quality="100"
+                  size="50px"
+                  mb={10}
+                  mr={10}
+                />
+          <Stack >
             <Heading
               textAlign="center"
               letterSpacing="tight"
               as="h1"
               size="2xl"
-              m="0 auto"
               mb="4"
             >
               Hi, I’m{' '}
@@ -87,9 +96,9 @@ const Index = () => {
                 Upendra Rajan
               </Text>
             </Heading>
-            <Text textAlign="center" fontSize="sm" color={secondaryTextColor[colorMode]}>
+            {/* <Text textAlign="center" fontSize="sm" color={secondaryTextColor[colorMode]}>
               Welcome. This is a blog-search website I built to understand Next.js.
-            </Text>
+            </Text> */}
             <Flex
               align="center"
               flexDirection="column"
@@ -138,10 +147,10 @@ const Index = () => {
               About Me
             </Heading>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
-              I manage a global team of technical specialists and external
-              stakeholders to create IBM Systems and cloud computing (IaaS/PaaS)
-              related technical content and related services, helping monetize
-              systems in our data center. I work closely with IT specialists,
+              I manage a team of technical specialists and external
+              business partners to create IBM Systems and hybrid cloud (IaaS/PaaS)
+              related <CustomLink href="https://www.ibm.com/training/systems" isExternal>technical content</CustomLink> and related services, helping monetize
+              systems in our data center. I work closely with data center IT specialists,
               consultants and executives to achieve this.
             </Text>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
@@ -179,14 +188,6 @@ const Index = () => {
                 alignItems="center"
                 maxWidth="100%"
               >
-                <Image
-                  rounded="full"
-                  size="300px"
-                  layout="responsive"
-                  src="/static/images/upen.jpg"
-                  alt="Upendra Rajan"
-                  mb={10}
-                />
               </Flex>
             </Stack>
             <Heading letterSpacing="tight" mb={4} mt={4} as="h2" size="xl">
