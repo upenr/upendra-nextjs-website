@@ -67,16 +67,16 @@ const Index = () => {
           mt="20"
         >
           <Image
-                  borderRadius="full"
-                  boxSize="250px"
-                  src="/static/images/upen.jpg"
-                  alt="Upendra Rajan"
-                  quality="100"
-                  size="50px"
-                  mb={10}
-                  mr={10}
-                />
-          <Stack >
+            borderRadius="full"
+            boxSize="250px"
+            src="/static/images/upen.jpg"
+            alt="Upendra Rajan"
+            quality="100"
+            size="50px"
+            mb={10}
+            mr={10}
+          />
+          <Stack>
             <Heading
               textAlign="center"
               letterSpacing="tight"
@@ -90,8 +90,7 @@ const Index = () => {
                 color={newColor[colorMode]}
                 bgGradient="linear(to-r, cyan.500, teal.500)"
                 bgClip="text"
-                fontSize="6xl"
-                fontWeight="bold"
+                fontSize="5xl"
               >
                 Upendra Rajan
               </Text>
@@ -99,7 +98,7 @@ const Index = () => {
             {/* <Text textAlign="center" fontSize="sm" color={secondaryTextColor[colorMode]}>
               Welcome. This is a blog-search website I built to understand Next.js.
             </Text> */}
-            <Flex
+            {/* <Flex
               align="center"
               flexDirection="column"
               justifyContent="center"
@@ -124,7 +123,7 @@ const Index = () => {
                   Get started
                 </Button>
               </NextLink>
-            </Flex>
+            </Flex> */}
           </Stack>
         </Flex>
         <Stack
@@ -147,11 +146,12 @@ const Index = () => {
               About Me
             </Heading>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
-              I manage a team of technical specialists and external
-              business partners to create IBM Systems and hybrid cloud (IaaS/PaaS)
-              related <CustomLink href="https://www.ibm.com/training/systems" isExternal>technical content</CustomLink> and related services, helping monetize
-              systems in our data center. I work closely with data center IT specialists,
-              consultants and executives to achieve this.
+              I manage a team of technical specialists and handle relationships
+              with external business partners to create hybrid cloud (IaaS/PaaS)
+              related technical content and content-related services, helping
+              monetize systems in our data center. I work closely with
+              executives, product managers, data center IT specialists and
+              consultants to achieve this.
             </Text>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
               I've presented to IT personnel and executives at technical
@@ -187,8 +187,7 @@ const Index = () => {
                 justifyContent="center"
                 alignItems="center"
                 maxWidth="100%"
-              >
-              </Flex>
+              ></Flex>
             </Stack>
             <Heading letterSpacing="tight" mb={4} mt={4} as="h2" size="xl">
               Portfolio
@@ -238,7 +237,7 @@ const Index = () => {
             mt={4}
           >
             <Heading letterSpacing="tight" mb={4} as="h2" size="xl">
-              Speaker At 💼
+              Speaker At 👨‍💼
             </Heading>
             <Heading size="md" as="h2" mb={2} fontWeight="medium">
               <Link
@@ -293,7 +292,7 @@ const Index = () => {
                 height="300px"
                 src="https://www.google.com/maps/d/embed?mid=1DNDs3fIaVs77g3IGDeFxp_D9iRy03d7X"
                 title="Upendra Travelled Cities"
-                width="100%"
+                width="50%"
               />
             </Box>
           </Flex>
