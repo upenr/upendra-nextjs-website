@@ -237,8 +237,7 @@ const Index = () => {
             mt={4}
           >
             <Heading letterSpacing="tight" mb={4} as="h2" size="xl">
-              Speaker At 👨‍💼
-            </Heading>
+              Speaker At 👨‍�?            </Heading>
             <Heading size="md" as="h2" mb={2} fontWeight="medium">
               <Link
                 display="flex"
@@ -255,7 +254,7 @@ const Index = () => {
               · IBM TechU 2021, Virtual event <br />
               · IBM TechU 2020, Istanbul and a virtual event
               <br />
-              · IBM TechU 2019, Casablanca, Atlanta, Sydney, Prague
+              · IBM TechU 2019, Casablanca, Atlanta, Bangkok, Sydney, Prague
               <br />
               · IBM TechU 2018, Cairo, Dubai, Sydney and Hollywood (FL)
               <br />
