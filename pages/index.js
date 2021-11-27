@@ -237,7 +237,7 @@ const Index = () => {
             mt={4}
           >
             <Heading letterSpacing="tight" mb={4} as="h2" size="xl">
-              Speaker At 👨‍�?            </Heading>
+              Speaker At 💼            </Heading>
             <Heading size="md" as="h2" mb={2} fontWeight="medium">
               <Link
                 display="flex"
