@@ -146,20 +146,21 @@ const Index = () => {
               About Me
             </Heading>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
-              I manage a team of technical specialists and handle relationships
-              with external business partners to create hybrid cloud (IaaS/PaaS)
-              related technical content and content-related services, helping
-              monetize systems in our data center. I work closely with
-              executives, product managers, data center IT specialists and
-              consultants to achieve this.
+              I lead a team of technical specialists who create technical
+              content on operating systems, virtualization, software-defined
+              storage and cloud for IBM Systems, assisting in the monetization
+              of systems in our data center. To accomplish this, I collaborate
+              closely with executives, product managers, data center IT
+              specialists, and consultants.
             </Text>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
-              I've presented to IT personnel and executives at technical
-              conferences about infrastructure design and cloud-based product
+              I've presented to IT personnel and executives at conferences
+              about IT infrastructure design and cloud-based product
               implementations, through hands-on labs, live demonstrations and
               presentations. I read several investment and business related
-              books in my free time. I also develop Android applications and
-              websites such as this. Follow me on&nbsp;
+              books in my spare time. I also develop Android apps and
+              Javascript-based websites like this one: https://upenr.vercel.app.
+              Follow me on&nbsp;
               <CustomLink href="https://www.twitter.com/__upen">
                 Twitter
               </CustomLink>{' '}
@@ -169,10 +170,12 @@ const Index = () => {
               </CustomLink>
             </Text>
             <Text color={secondaryTextColor[colorMode]} mb={4}>
-              I grew up in Chennai, India, graduating with a Bachelor's degree
-              in Electronics and Communication Engineering. I then received a
-              Master's degree in Computer Network Engineering from North
-              Carolina State University.
+              I was born and raised in Chennai, India, where I earned a Bachelor
+              of Engineering degree in Electronics and Communication
+              Engineering. I received a Master's degree in Computer Network
+              Engineering from North Carolina State University. I am passionate
+              about making complex tech understandable to everyone and
+              innovating to improve products, services and client relationships.
             </Text>
             <Stack
               as="main"
@@ -237,7 +240,8 @@ const Index = () => {
             mt={4}
           >
             <Heading letterSpacing="tight" mb={4} as="h2" size="xl">
-              Speaker At 💼            </Heading>
+              Speaker At 💼{' '}
+            </Heading>
             <Heading size="md" as="h2" mb={2} fontWeight="medium">
               <Link
                 display="flex"
