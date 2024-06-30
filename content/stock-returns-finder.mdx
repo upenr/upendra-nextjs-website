@@ -1,0 +1,68 @@
+---
+title: 'Stock Returns Finder: Scraping Yahoo Finance for a Free Android app'
+publishedAt: '2020-08-19'
+summary: "Here’s a quick write-up on a tiny Android application I wrote and published in two days, over the course of a weekend. Quickly find financial ratios such as Return on Capital Employed (ROCE), Return on Equity (ROE) and Return on Assets (ROA) for any company in the world."
+image: '/static/images/roceapp/image001.jpg'
+type: 'Blog'
+---
+# Table of Contents
+
+1.  [The problem](#the-problem)
+2.  [The solution](#the-solution)
+3.  [The published app](#the-published-app)
+
+Here's a quick overview of a small Android application I developed and published over a weekend. Although the app has been deprecated since then, it highlights the approach I used to tackle the problem.
+
+# The problem: 
+
+There are many paid services which provide company financial ratios, specifically, company return-related ratios, such as Return on Capital Employed (ROCE), Return on Equity (ROE) and Return on Assets (ROA). However, there aren&#39;t many (or any on Android) that provide it instantly for free. Even if they did, there aren&#39;t any that provide all three ratios at a glance.
+
+I used to manually calculate these ratios for several companies, until I decided to automate it. I wanted to write an application which displays these ratios instantly for any public company in the world. The company must be listed on Yahoo Finance. That is the only requirement. Of course, some paid services with an API can return these values to you instantly too. A problem that comes with paid services is that several of them don&#39;t have data on companies listed in foreign stock exchanges. The challenge here then is, _can we do this for free, and for any public company in the world_?
+
+# The solution:
+
+This is not a greatly complicated problem. But, it&#39;s not an easy problem either. Here&#39;s the source page of the Yahoo Finance Income Statement page for Apple, Inc (copy-paste with the view-source prefix):
+```js
+view-source:https://finance.yahoo.com/quote/AAPL/financials.
+```
+This has about 800,000 characters. Let&#39;s say, about 24,000 words. Here&#39;s the page for its Balance Sheet:
+```js
+view-source:https://finance.yahoo.com/quote/AAPL/balance-sheet.
+```
+We need an efficient way to extract just about 20 words from one of these source pages. It&#39;s like looking for needles in a haystack. It may be an easy problem for a seasoned programmer, but not for me.
+
+I used custom Java classes, JSON parsing and a few hashmaps to parse and extract the dates of the financial statements, earnings before interest and taxes (EBIT), total assets, total liabilities, total current liabilities, interest before taxes, net income and a few other relevant metrics. I manually looked at the Yahoo Finance source pages for hours trying to find the best way to fetch these data and ignore the rest. Also, how do you handle financial statements for banks and a few other companies which don&#39;t publish current liabilities? I approximated the problem by using income before taxes. So, for banks, the ROCE data is close to accurate, but not quite. Most people don&#39;t need accurate data, but need to find if the returns are consistent over the period of a few years.
+
+# The published app:
+
+This app is now _completely free and has no ads_.
+
+Feel free to download this app and suggest any new features: [https://play.google.com/store/apps/details?id=com.upen.rocecalculator](https://play.google.com/store/apps/details?id=com.upen.rocecalculator)
+
+**A few screenshots of the user interface:**
+
+![Image1](/static/images/roceapp/image002.jpg)
+Image 1. Screenshot from an Android phone
+
+![Image2](/static/images/roceapp/image004.jpg)
+Image 2. Screenshot from an Android phone
+
+![Image3](/static/images/roceapp/image006.jpg)
+Image 3. Screenshot from an Android phone
+
+![Image4](/static/images/roceapp/image008.jpg)
+Image 4. Screenshot from an Android phone
+
+![Image9](/static/images/roceapp/image010.jpg)
+Image 5. Screenshot from an Android tablet
+
+![Image10](/static/images/roceapp/image012.jpg)
+Image 6. Screenshot from an Android tablet
+
+![Image11](/static/images/roceapp/image014.jpg)
+Image 7. Screenshot from an Android tablet
+
+![Image12](/static/images/roceapp/image016.jpg)
+Image 8. Screenshot from an Android tablet
+
+I apologize for any grammatical errors in this blog. <br/>
