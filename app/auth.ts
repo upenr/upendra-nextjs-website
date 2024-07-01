@@ -12,8 +12,7 @@ export const {
     }),
   ],
   pages: {
-    //signIn: '/sign-in',
-    newUser: '/'
+    signIn: '/sign-in'
   },
   debug: true,
 });
