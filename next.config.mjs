@@ -39,7 +39,7 @@ const nextConfig = {
     ];
   },
   reactStrictMode: true,
-  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
 };
 
 const ContentSecurityPolicy = `
@@ -51,7 +51,7 @@ const ContentSecurityPolicy = `
     connect-src *;
     font-src 'self' data:;
     frame-src 'self' *.codesandbox.io vercel.live www.google.com;
-`;
+`; //google.com for Google Maps embed under /work
 
 const securityHeaders = [
   {
@@ -84,5 +84,4 @@ const securityHeaders = [
   },
 ];
 
-//export default nextConfig;
 export default nextConfig;

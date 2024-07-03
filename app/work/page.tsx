@@ -65,7 +65,7 @@ export default function WorkPage() {
             conferences
           </a>
         </h3>
-        <p>
+        <span>
           <ul>
             <li>IBM TechXchange 2024, Las Vegas</li>
             <li>IBM TechUmini 2023, Paris</li>
@@ -98,7 +98,7 @@ export default function WorkPage() {
             <li>IBM TechU 2014, Istanbul, Dublin, Sao Paulo</li>
             <li>And many other virtual client events</li>
           </ul>
-        </p>
+        </span>
         <hr className="my-6 border-neutral-100 dark:border-neutral-800" />
         <h2 className="font-medium text-xl mb-1 tracking-tighter">
           Cities visited
@@ -107,7 +107,7 @@ export default function WorkPage() {
         <div>
           <iframe
             height="300px"
-            src="https://www.google.com/maps/d/embed?mid=1DNDs3fIaVs77g3IGDeFxp_D9iRy03d7X"
+            src="https://www.google.com/maps/d/embed?mid=1DNDs3fIaVs77g3IGDeFxp_D9iRy03d7X&libraries=marker"
             title="Upendra Travelled Cities"
             width="100%"
             style={{ border: 0 }}
