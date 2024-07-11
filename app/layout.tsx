@@ -37,10 +37,7 @@ export const metadata: Metadata = {
     title: 'Upendra Rajan',
     card: 'summary_large_image',
   },
-  verification: {
-    google: 'eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw',
-    yandex: '14d2e73487fa6c71',
-  },
+  verification: { google: "7K7-tVXyEmqbUSwaobsK1L1sXjv_HDNXR0O6-FoF5AE" },
 };
 
 const cx = (...classes) => classes.filter(Boolean).join(' ');
