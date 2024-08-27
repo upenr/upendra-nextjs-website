@@ -119,6 +119,12 @@ export default function Page() {
           sessions, self-paced virtual courses, and workshops.
         </p>
       </div>
+      <div className="prose prose-neutral dark:prose-invert">
+        <p>
+          I study value investors in my free time and analyze companies that
+          meet my margin of safety and circle of competence requirements.
+        </p>
+      </div>
       <div className="prose prose-neutral dark:prose-invert"></div>
       <div className="my-8 flex w-full flex-col space-y-4">
         <BlogLink
@@ -135,12 +141,6 @@ export default function Page() {
         />
       </div>
       <div className="prose prose-neutral dark:prose-invert">
-        <p>
-          I study value investors in my free time and analyze companies that
-          meet my margin of safety and circle of competence requirements.
-        </p>
-      </div>
-      <div className="prose prose-neutral dark:prose-invert">
         <p>Open to collaborate and build new things. Reach out to me.</p>
       </div>
       <div className="my-8 flex w-full flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
@@ -154,7 +154,7 @@ export default function Page() {
         <ChannelLink
           img={coursemigrate}
           name="Personal project: CourseMigrate"
-          link="https://www.coursemigrate.co"
+          link="https://www.coursemanage.org"
         />
       </div>
       <div className="my-8 flex w-full flex-col space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
