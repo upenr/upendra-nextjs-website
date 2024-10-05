@@ -8,7 +8,7 @@ import { revalidatePath, unstable_noStore as noStore } from 'next/cache';
 export async function increment(slug: string) {
   noStore();
   await sql`
-    INSERT INTO views (slug, count)
+    INSERT INTO upenr_views (slug, count)
     VALUES (${slug}, 1)
     ON CONFLICT (slug)
     DO UPDATE SET count = views.count + 1
@@ -37,7 +37,7 @@ export async function saveGuestbookEntry(formData: FormData) {
   let body = entry.slice(0, 500);
 
   await sql`
-    INSERT INTO Guestbook (id, email, body, created_by, created_at)
+    INSERT INTO upenr_guestbook (id, email, body, created_by, created_at)
     VALUES (RANDOM()+5000, ${email}, ${body}, ${created_by}, NOW())
   `;
 
@@ -73,7 +73,7 @@ export async function deleteGuestbookEntries(selectedEntries: string[]) {
   let arrayLiteral = `{${selectedEntriesAsNumbers.join(',')}}`;
 
   await sql`
-    DELETE FROM Guestbook
+    DELETE FROM upenr_guestbook
     WHERE id = ANY(${arrayLiteral}::int[])
   `;
 

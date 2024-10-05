@@ -21,7 +21,7 @@ const nextConfig = {
 
     let redirects = await sql`
       SELECT source, destination, permanent
-      FROM redirects;
+      FROM upenr_redirects;
     `;
 
     return redirects.map(({ source, destination, permanent }) => ({

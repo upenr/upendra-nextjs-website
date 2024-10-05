@@ -28,7 +28,7 @@ export async function getBlogViews() {
   noStore();
   let views = await sql`
     SELECT count
-    FROM views
+    FROM upenr_views
   `;
 
   return views.reduce((acc, curr) => acc + Number(curr.count), 0);
@@ -44,7 +44,7 @@ export async function getViewsCount(): Promise<
   noStore();
   return sql`
     SELECT slug, count
-    FROM views
+    FROM upenr_views
   `;
 }
 
@@ -56,7 +56,7 @@ export async function getGuestbookEntries() {
   noStore();
   return sql`
     SELECT id, body, created_by, updated_at
-    FROM Guestbook
+    FROM upenr_guestbook
     ORDER BY created_at DESC
     LIMIT 100
   `;
