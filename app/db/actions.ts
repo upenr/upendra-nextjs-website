@@ -11,7 +11,7 @@ export async function increment(slug: string) {
     INSERT INTO upenr_views (slug, count)
     VALUES (${slug}, 1)
     ON CONFLICT (slug)
-    DO UPDATE SET count = views.count + 1
+    DO UPDATE SET count = upenr_views.count + 1
   `;
 }
 
